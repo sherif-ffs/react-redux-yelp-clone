@@ -1,0 +1,17 @@
+.apartment-button {
+    border: 1px solid white;
+    background-color: red;
+    color: white;
+    font-size: 15px;
+    z-index: -1!important;
+    position: relative;
+}
+.form {
+    width: 20%;
+    height: 200px;
+    float: right!important;
+    background-color: red;
+    position: fixed;
+    border: 1px solid red;
+    z-index: 999!important;
+}
