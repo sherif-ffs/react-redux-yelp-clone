@@ -1,36 +1,63 @@
 import React from "react";
-import Map from './components/map/Map'
+import { BrowserRouter, Route } from 'react-router-dom';
 
+import Map from './components/map/Map'
+import Grid from './components/grid/Grid'
+import Profile from './components/profile/Profile'
+import PageTabs from './components/PageTabs'
 import './styles/app.css'
 
-class App extends React.Component {
+const App = () => {
+  return (
+    <div>
+      <BrowserRouter>
+        <PageTabs/>
+        <div>
+          <Route path="/" exact component={Map} />
+          <Route path="/listings" component={Grid} />
+          <Route path="/profile" component={Profile} />
+          {/* <Route path="/page/:id" component={VariablePage} /> */}
+        </div>
+      </BrowserRouter>
+    </div>
+  )
+}
 
-  // componentDidMount() {
-  //   this.callApi()
-  // }
+class AppOld extends React.Component {
+  state = {
+    view: 'page1'
+  }
+  
+  onViewChange(view) {
+    this.setState({ view });
+  }
 
-  // callApi() {
-  //   fetch("https://realtor.p.rapidapi.com/properties/list-for-rent?radius=10&sort=relevance&state_code=NY&limit=50&city=New%20York%20City&offset=0", {
-  //   "method": "GET",
-  //   "headers": {
-  //     "x-rapidapi-host": "realtor.p.rapidapi.com",
-  //     "x-rapidapi-key": "fd98d4c4aamshd0b0e63a32e7ed0p1aba23jsn3975c7acf7d1"
-  //   }
-  //   })
-  // .then(res => res.json())
-  // .then((data) => {
-  //   console.log(data.listings);
-  // })
-  // .catch(err => {
-  //   console.log(err);
-  // });
-  // }
+  wrapPage(jsx) {
+    const { view } = this.state;
+    return (
+      <div className="container">
+        <PageTabs currentView={view}
+                  onViewChange={this.onViewChange.bind(this)}/>
+        {jsx}
+      </div>
+    );
+  }
 
   render() {
-    return(
-      <Map></Map>
-    )
+    const { view } = this.state;
+
+    switch (view) {
+      case 'page1':
+        return (this.wrapPage(<Map />));
+      case 'page2':
+        return (this.wrapPage(<Grid />));
+      case 'page3':
+        return (this.wrapPage(<Profile />));
+      default:
+        return (this.wrapPage(<h2>Invalid Tab, choose another</h2>));
+    }
+
   }
 }
 
-export default App
+export default App;

@@ -2,7 +2,13 @@
 
 - [x] connect to api
 - [x] get map working
-- [ ] get react-router to work
-- [ ] add nav-bar
-- [ ] style components
-- [ ] search by price, square footage, etc...
+- [x] get react-router to work
+- [x] add nav-bar
+- [x] style components
+
+###### Form Todo ui
+- [x] search by state, city, radius
+- [x] pets, no pets allowed (radio)
+- [x] price min
+- [x] beds min 
+- [x] submit button

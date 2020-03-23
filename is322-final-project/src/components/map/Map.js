@@ -1,6 +1,10 @@
 import React from "react";
 
 import ReactMap, { Marker, Popup } from "react-map-gl"
+import Form from '../shared/Form'
+import SearchIcon from '@material-ui/icons/Search';
+import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
+
 import '../../styles/map/map.css'
 class Map extends React.Component {
 
@@ -12,9 +16,16 @@ class Map extends React.Component {
         longitude: -74.0060,
         zoom: 12,
         width: '100vw',
-        height: '100vh',
+        height: '90vh',
     },
-    token:'pk.eyJ1Ijoic2hlcmlmLWZmcyIsImEiOiJjazgyNGFoM3Mwd29qM2xsbml4eHIyNm9qIn0.k8-uELDQoHBgpiITyyc6pg'
+    token:'pk.eyJ1Ijoic2hlcmlmLWZmcyIsImEiOiJjazgyNGFoM3Mwd29qM2xsbml4eHIyNm9qIn0.k8-uELDQoHBgpiITyyc6pg',
+    showForm: false,
+  }
+
+  closeForm = () => {
+    this.setState({
+      showForm: false
+    })
   }
 
   componentDidMount() {
@@ -47,7 +58,7 @@ class Map extends React.Component {
       <ReactMap
         {...this.state.viewport}
         mapboxApiAccessToken={this.state.token}
-        mapStyle="mapbox://styles/sherif-ffs/ck82556sa0ugx1imsr8dce0k3"
+        mapStyle="mapbox://styles/sherif-ffs/ck83l6omf28bw1iqw07lrngts"
         onViewportChange={viewport => {
             this.setState({ viewport: viewport })
         }}
@@ -67,7 +78,7 @@ class Map extends React.Component {
                         selectedListing: listing
                     })
                 }}
-              >apartment</div>
+              ><HomeRoundedIcon fontSize="medium"/></div>
           </Marker>
       ))}
       {this.state.selectedListing ? (
@@ -86,7 +97,10 @@ class Map extends React.Component {
               </div>
           </Popup>
       ) : null}
+      {this.state.showForm ? <Form closeForm={this.closeForm}></Form> : <SearchIcon className="circle" onClick={() => this.setState({ showForm: true})}></SearchIcon>}
+      
       </ReactMap>
+      
     )
   }
 }

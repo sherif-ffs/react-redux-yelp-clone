@@ -1,0 +1,98 @@
+.form-wrapper {
+    width: 30vw;
+    height: min-content;
+    padding-bottom: 20px;
+    cursor: default!important;
+    background-color: #f7f8f8;
+    margin-top: 2vh;
+    margin-right: 2vw;
+    position: fixed;
+    left: 99%;
+    /* top: 0%; */
+    margin-left: -450px; /*half the width*/
+    z-index: 999!important;
+    transition: .2s;
+    transition-timing-function: ease-in-out;
+}
+.title-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+.title-wrapper__title {
+    margin-top: 3vh;
+    font-family: 'Lato', Helvetica,Arial , sans-serif!important;
+    margin-left: 5%;
+    flex: 4;
+    font-size: 1.6rem;
+    font-weight: 900!important;
+    color: #bbb9b9;
+}
+.title-wrapper__close {
+    display: flex;
+    flex: 1;
+    opacity: .5;
+    margin-right: .5vw;
+    color: #535353!important;
+    margin-top: 2.5vh;
+    transition: .2s;
+    transition-timing-function: ease-in-out;
+}
+.title-wrapper__close:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition: .2s;
+    transition-timing-function: ease-in-out;
+}
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin-left: 2.5%;
+    margin-top: 2vh;
+}
+.input {
+    margin: 5px!important;
+    display: flex!important;
+}
+.city {
+    flex:.8;
+}
+.state {
+    flex:.4;
+}
+.radius {
+    flex:.5;
+}
+.pet-input-wrapper {
+    margin-top: 3vh;
+    margin-left: 5%;
+}
+.pets-label {
+    margin-left: 0!important;
+}
+.label {
+    margin-top: 3vh;
+    font-family: 'Lato', Helvetica,Arial , sans-serif!important;
+    margin-left: 5%;
+    font-size: .9rem!important;
+    font-weight: 600!important;
+    color: #3e51b5!important;
+}
+.price-wrapper {
+    margin-top: 2vh;
+}
+
+.search-button {
+    background-color: #3e51b5!important;
+    border-radius: 5px!important;
+    margin-left: 5%!important;
+    color: #fafafa!important;
+    margin-top: 2vh!important;
+    width: 40%!important;
+    font-family: 'Lato', Helvetica,Arial , sans-serif!important;
+    font-size: 1.3rem!important;
+}
+.search-icon {
+    margin-left: 5%!important;
+    font-size: 1.8rem!important;
+}
