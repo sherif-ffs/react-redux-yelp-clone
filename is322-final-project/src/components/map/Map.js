@@ -6,139 +6,70 @@ import SearchIcon from '@material-ui/icons/Search';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 
 import '../../styles/map/map.css'
+
 class Map extends React.Component {
 
   state = {
-    listings: [],
-    selectedListing: null,
-    viewport: {
-        latitude: 40.7128,
-        longitude: -74.0060,
-        zoom: 12,
-        width: '100vw',
-        height: '90vh',
-    },
-    token:'pk.eyJ1Ijoic2hlcmlmLWZmcyIsImEiOiJjazgyNGFoM3Mwd29qM2xsbml4eHIyNm9qIn0.k8-uELDQoHBgpiITyyc6pg',
-    showForm: false,
-    searchInput: {
-      city: '',
-      state: '',
-      radius: 10,
-      allowPets: false,
-      minRent: '',
-      maxRent: '',
-      minBeds: '',
-      minBaths: ''
-    }
-  }
-
-  onSearchSubmit = (payLoad) => {
-    console.log('payLoad: ', payLoad)
-    if (payLoad.city === '') {
-      alert('enter a city name')
-    }
-    if (payLoad.state === '') {
-      alert('enter a state name')
-    }
-    this.setState({
-      searchInput: payLoad
-    })
-    this.testApi(payLoad)
-  }
-
-  closeForm = () => {
-    this.setState({
-      showForm: false
-    })
+    showForm: '',
+    viewport: '',
+    listings: []
   }
 
   componentDidMount() {
-    this.callApi()
-  }
-
-  testApi(input) {
-    console.log('input: ', input)
-    let allowPets=input.allowPets
-    let minRent= input.minRent !== '' ? input.minRent : 0
-    let maxRent= input.maxRent !== '' ? input.maxRent : 999999
-    let radius=input.radius
-    let minBeds=input.minBeds
-    let minBaths=input.minBaths
-    let state=input.state
-    let city=input.city
-    let queryString;
-
-    if (allowPets === false) {
-      queryString = `https://realtor.p.rapidapi.com/properties/list-for-rent?no_pets_allowed=true&price_min=${minRent}&price_max=${maxRent}&radius=${radius}&beds_min=${minBeds}&sort=relevance&baths_min=${minBaths}&state_code=${state}&limit=200&city=${city}&offset=0`;
-    } else {
-      queryString = `https://realtor.p.rapidapi.com/properties/list-for-rent?allows_dogs=true&allows_cats=true&price_min=${minRent}&price_max=${maxRent}&radius=${radius}&beds_min=${minBeds}&sort=relevance&baths_min=${minBaths}&state_code=${state}&limit=200&city=${city}&offset=0`
-    }
-    fetch(queryString, {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "realtor.p.rapidapi.com",
-      "x-rapidapi-key": "fd98d4c4aamshd0b0e63a32e7ed0p1aba23jsn3975c7acf7d1"
-    }
-    })
-  .then(res => res.json())
-  .then((data) => {
-    console.log('data.listings: ', data.listings);
-    console.log('data: ', data);
-    if (data.listings !== undefined) {
-      alert('View Listings')
-      let newViewport = {
-        latitude: data.listings[0].lat,
-        longitude: data.listings[0].lon,
-        zoom: 10,
-        width: '100vw',
-        height: '90vh',
-    }
-      this.setState({
-        listings: data.listings,
-        viewport: newViewport
-      })
-    } 
-    
-  })
-  .catch(err => {
-    console.log(err);
-  });
-
-  }
-  callApi() {
-    fetch("https://realtor.p.rapidapi.com/properties/list-for-rent?radius=10&sort=relevance&state_code=NY&limit=200&city=New%20York%20City&offset=0", {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "realtor.p.rapidapi.com",
-      "x-rapidapi-key": "fd98d4c4aamshd0b0e63a32e7ed0p1aba23jsn3975c7acf7d1"
-    }
-    })
-  .then(res => res.json())
-  .then((data) => {
-    console.log(data.listings);
     this.setState({
-        listings: data.listings
+      showForm: false,
+      viewport: this.props.state.viewport,
+      listings: this.props.listings
     })
-  })
-  .catch(err => {
-    console.log(err);
-  });
   }
 
-  render() {
-    console.log('this.state: ', this.state)    
-    // console.log('this.state: ', this.state)
+  componentDidUpdate(prevProps) {
+    if (prevProps.state.listings !== this.props.state.listings) {
+      this.updateViewport()
+    }
+  }
+
+updateViewport = () => {
+  let latitudes = 0;
+  this.props.state.listings.forEach(listing => {
+    latitudes += listing.lat
+  })
+  let longitudes = 0;
+  this.props.state.listings.forEach(listing => {
+    longitudes += listing.lon
+  })
+  let newViewport = {
+    latitude: latitudes / this.props.state.listings.length,
+    longitude: longitudes / this.props.state.listings.length,
+    zoom: 11,
+    width: '100vw',
+    height: '90vh',
+ }
+ this.setState({
+   viewport: newViewport
+ })
+ this.props.updateAppViewport()
+}
+
+closeForm = () => {
+  this.setState({
+    showForm: false
+  })
+}
+
+  render() { 
     return(
       <ReactMap
         {...this.state.viewport}
-        mapboxApiAccessToken={this.state.token}
+        mapboxApiAccessToken={this.props.state.token}
         mapStyle="mapbox://styles/sherif-ffs/ck83l6omf28bw1iqw07lrngts"
         onViewportChange={viewport => {
+            console.log('viewport: ', viewport)
             this.setState({ viewport: viewport })
         }}
       >
       <div className="form"></div>
-      {this.state.listings.map((listing) => (
+      {this.props.state.listings.map((listing) => (
           <Marker
             key={listing.listing_id}
             latitude={listing.lat}
@@ -171,7 +102,7 @@ class Map extends React.Component {
               </div>
           </Popup>
       ) : null}
-      {this.state.showForm ? <Form closeForm={this.closeForm} onSubmit={this.onSearchSubmit}></Form> : <SearchIcon className="circle" onClick={() => this.setState({ showForm: true})}></SearchIcon>}
+      {this.state.showForm ? <Form closeForm={this.closeForm} onSubmit={this.props.onSearchSubmit}></Form> : <SearchIcon className="circle" onClick={() => this.setState({ showForm: true})}></SearchIcon>}
       
       </ReactMap>
       
@@ -179,4 +110,6 @@ class Map extends React.Component {
   }
 }
 
-export default Map
+
+
+export default Map;
