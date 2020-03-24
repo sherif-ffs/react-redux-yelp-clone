@@ -6,7 +6,8 @@ class ListingDetails extends React.Component {
     propertyId = this.props.match.params.id.substring(11, 21)
 
     state = {
-        listing: {}
+        listing: {},
+        errorMessage: ''
     }
     componentDidMount() {
         this.callApi();
@@ -23,9 +24,16 @@ class ListingDetails extends React.Component {
         .then(res => res.json())
         .then((data) => {
             console.log('data: ', data)
-            this.setState({
-                listing: data.listing
-            })
+            if (data.listing !== null && data.listing !== 'undefined') {
+                this.setState({
+                    listing: data.listing
+                })
+            } else {
+                this.setState({
+                    errorMessage: 'No Data for this apartment'
+                })
+            }
+            
         })
         .catch(err => {
             console.log(err);
@@ -40,7 +48,9 @@ class ListingDetails extends React.Component {
 
         
         return (
-            Object.keys(this.state.listing).length > 0
+            this.state.listing == null ?
+            <div>No data can be loaded for this apartment</div>
+            : (Object.keys(this.state.listing).length > 0
             ? 
                 <React.Fragment>
                     <h1>Welcome</h1>
@@ -48,7 +58,7 @@ class ListingDetails extends React.Component {
                     <h1>{this.state.listing.address.state}</h1>                         
                     <h1>{this.state.listing.address.county}</h1>    
                 </React.Fragment>
-            : <div>loading</div>
+            : <div>loading</div>)
         )
         
     }

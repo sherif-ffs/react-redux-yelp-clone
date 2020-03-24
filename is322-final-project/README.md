@@ -7,7 +7,8 @@
 - [x] style components
 - [x] move api call to App.js
 - [x] lift up state
-- [ ] make apartment details page
+- [x] make apartment details page
+- [x] display error message when there are no details for the apartment
 - [ ] update styles
 
 
