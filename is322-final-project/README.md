@@ -7,7 +7,7 @@
 - [x] style components
 - [x] move api call to App.js
 - [x] update styles
-- [ ] redux for state
+- [ ] lift up state
 
 ###### Form Todo 
 - [x] search by state, city, radius
