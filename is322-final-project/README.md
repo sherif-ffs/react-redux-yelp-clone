@@ -6,8 +6,10 @@
 - [x] add nav-bar
 - [x] style components
 - [x] move api call to App.js
-- [x] update styles
 - [x] lift up state
+- [ ] make apartment details page
+- [ ] update styles
+
 
 ###### Form Todo 
 - [x] search by state, city, radius

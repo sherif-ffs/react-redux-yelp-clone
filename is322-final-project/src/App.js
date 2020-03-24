@@ -3,6 +3,7 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import Map from './components/map/Map'
 import Grid from './components/grid/Grid'
+import ListingDetails from './components/grid/ListingDetails'
 import Profile from './components/profile/Profile'
 import PageTabs from './components/PageTabs';
 
@@ -135,7 +136,7 @@ class App extends React.Component {
             />
             <Route path="/listings" component={Grid} />
             <Route path="/profile" component={Profile} />
-            {/* <Route path="/page/:id" component={VariablePage} /> */}
+            <Route path="/listing/:id" component={ListingDetails} />
           </div>
         </BrowserRouter>
       </div>

@@ -4,7 +4,7 @@ import ReactMap, { Marker, Popup } from "react-map-gl"
 import Form from '../shared/Form'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
-
+import { Link } from 'react-router-dom'
 import '../../styles/map/map.css'
 
 class Map extends React.Component {
@@ -58,13 +58,14 @@ closeForm = () => {
 }
 
   render() { 
+    // console.log('this.props.state.listings: ', this.props.state.listings)
     return(
       <ReactMap
         {...this.state.viewport}
         mapboxApiAccessToken={this.props.state.token}
         mapStyle="mapbox://styles/sherif-ffs/ck83l6omf28bw1iqw07lrngts"
         onViewportChange={viewport => {
-            console.log('viewport: ', viewport)
+            // console.log('viewport: ', viewport)
             this.setState({ viewport: viewport })
         }}
       >
@@ -98,7 +99,10 @@ closeForm = () => {
                   <h2>{this.state.selectedListing.price}</h2>
                   <h3>{this.state.selectedListing.sqft_raw}</h3>
                   <h3>{this.state.selectedListing.prop_type}</h3>
-                  <h3>{this.state.selectedListing.address}</h3>
+                  <h3>{this.state.selectedListing.id}</h3>
+                  <Link to={`listing/${this.state.selectedListing.listing_id}&${this.state.selectedListing.property_id}`}>
+                    view details
+                  </Link>
               </div>
           </Popup>
       ) : null}
