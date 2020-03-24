@@ -14,8 +14,20 @@ import '../../styles/form.css'
 class Form extends React.Component {
 
     state = {
-        showModal: null
+        city: '',
+        state: '',
+        radius: 5,
+        allowPets: false,
+        minRent: '',
+        maxRent: '',
+        minBeds: '',
+        minBaths: ''
     }
+
+    onSearchSubmit = (event) => {
+        event.preventDefault();
+        this.props.onSubmit(this.state);
+      }
 
     render() {
         
@@ -26,33 +38,104 @@ class Form extends React.Component {
                     <h1 className="title-wrapper__title">Search Apartments</h1>
                     <CancelIcon className="title-wrapper__close" onClick={this.props.closeForm} fontSize="large"/>
                 </div>
-                <FormLabel component="legend" className="label">Location</FormLabel>
+                <form>
+                <FormLabel component="legend" className="label">Location *</FormLabel>
                 <div className="input-wrapper">
-                    <TextField id="outlined-basic" className="input city" label="City" variant="outlined" />
-                    <TextField id="outlined-basic" className="input state" label="State" variant="outlined" inputProps={{ maxLength: 2 }} placeholder="ex: NJ"/>
-                    <TextField id="outlined-basic" className="input radius" label="Radius" variant="outlined" placeholder="Miles"/>
+                    <TextField 
+                        id="outlined-basic" 
+                        className="input city" 
+                        label="City" 
+                        variant="outlined" 
+                        value={this.state.city}
+                        onChange={(e) => this.setState({ city: e.target.value })}
+                        // onChange={(e) => e.target.value !== '' ? this.setState({ city: e.target.value }) : alert('enter a city name please')}
+                    />
+                    <TextField 
+                        id="outlined-basic" 
+                        className="input state" 
+                        label="State" 
+                        variant="outlined" 
+                        inputProps={{ maxLength: 2 }} 
+                        placeholder="ex: NJ"
+                        value={this.state.state}
+                        onChange={(e) => this.setState({ state: e.target.value })}
+                    />
+                    <TextField 
+                        id="outlined-basic" 
+                        className="input radius" 
+                        label="Radius" 
+                        variant="outlined" 
+                        placeholder="Miles"
+                        value={this.state.radius}
+                        onChange={(e) => this.setState({ radius: e.target.value })}
+                    />
                 </div>
                 <div className="pet-input-wrapper">
-                <FormLabel component="legend" className="label pets-label">Pet Policy</FormLabel>
+                <FormLabel component="legend" className="label pets-label">Pet Policy (optional)</FormLabel>
                     <RadioGroup aria-label="gender" name="gender1">
-                        <FormControlLabel value="female" control={<Radio color="primary"/>} label="No Pets"/>
-                        <FormControlLabel value="male" control={<Radio color="primary"/>} label="Pets Allowed"/>
+                        <FormControlLabel 
+                            value={false}
+                            control={<Radio color="primary"/>} 
+                            label="No Pets" 
+                            checked={!this.state.allowPets}
+                            onChange={() => this.setState({ allowPets: false })}
+                        />
+                        <FormControlLabel 
+                            value={true} 
+                            control={<Radio color="primary"/>} 
+                            label="Pets Allowed"
+                            checked={this.state.allowPets}
+                            onChange={() => this.setState({ allowPets: true })}
+                        />
                     </RadioGroup>
                 </div>
-                <FormLabel component="legend" className="label">Price</FormLabel>
+                <FormLabel component="legend" className="label">Price (optional)</FormLabel>
                 <div className="input-wrapper price-wrapper">
-                    <TextField id="outlined-basic" className="input min-price" label="Min-Rent" variant="outlined" placeholder="$"/>
-                    <TextField id="outlined-basic" className="input max-price" label="Max-Rent" variant="outlined" placeholder="$"/>
+                    <TextField 
+                        id="outlined-basic" 
+                        className="input min-price" 
+                        label="Min-Rent" 
+                        variant="outlined" 
+                        placeholder="$"
+                        value={this.state.minRent}
+                        onChange={(e) => this.setState({ minRent: e.target.value })}
+                    />
+                    <TextField 
+                        id="outlined-basic" 
+                        className="input max-price" 
+                        label="Max-Rent" 
+                        variant="outlined" 
+                        placeholder="$"
+                        value={this.state.maxRent}
+                        onChange={(e) => this.setState({ maxRent: e.target.value })}
+                    />
                 </div>
-                <FormLabel component="legend" className="label">Baths & Beds</FormLabel>
+                <FormLabel component="legend" className="label">Baths & Beds (optional)</FormLabel>
                 <div className="input-wrapper price-wrapper">
-                    <TextField id="outlined-basic" className="input beds" label="Min-Beds" variant="outlined" placeholder="1"/>
-                    <TextField id="outlined-basic" className="input baths" label="Min-Baths" variant="outlined" placeholder="1"/>
+                    <TextField 
+                        id="outlined-basic" 
+                        className="input beds" 
+                        label="Min-Beds" 
+                        variant="outlined" 
+                        placeholder="1"
+                        value={this.state.minBeds}
+                        onChange={(e) => this.setState({ minBeds: e.target.value })}
+                    />
+                    <TextField 
+                        id="outlined-basic" 
+                        className="input baths" 
+                        label="Min-Baths" 
+                        variant="outlined" 
+                        placeholder="1"
+                        value={this.state.minBaths}
+                        onChange={(e) => this.setState({ minBaths: e.target.value })}
+                    />
                 </div>
-                <IconButton color="primary" className="search-button">
+                <IconButton color="primary" className="search-button" onClick={this.onSearchSubmit}>
                     Search
                     <SearchIcon  className="search-icon"/>
                 </IconButton>
+                </form>
             </div>
         )
     }
