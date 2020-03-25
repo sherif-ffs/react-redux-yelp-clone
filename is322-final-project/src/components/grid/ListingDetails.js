@@ -1,5 +1,7 @@
 import React from 'react'
 
+import LoadingScreen from '../shared/LoadingScreen'
+
 class ListingDetails extends React.Component {
 
     listingId = this.props.match.params.id.substring(0, 10)
@@ -58,7 +60,7 @@ class ListingDetails extends React.Component {
                     <h1>{this.state.listing.address.state}</h1>                         
                     <h1>{this.state.listing.address.county}</h1>    
                 </React.Fragment>
-            : <div>loading</div>)
+            : <LoadingScreen></LoadingScreen>)
         )
         
     }

@@ -1,6 +1,10 @@
 import React from "react";
 import { BrowserRouter, Route } from 'react-router-dom';
 
+import axios from 'axios';
+import 'axios-progress-bar/dist/nprogress.css'
+import { loadProgressBar } from 'axios-progress-bar'
+
 import Map from './components/map/Map'
 import Grid from './components/grid/Grid'
 import ListingDetails from './components/grid/ListingDetails'
@@ -29,7 +33,8 @@ class App extends React.Component {
       maxRent: '',
       minBeds: '',
       minBaths: ''
-    }
+    },
+    loading: false
   }
   updateAppViewport = () => {
     let latitudes = 0;
@@ -70,6 +75,9 @@ class App extends React.Component {
   }
 
   testApi(input) {
+    this.setState({
+      loading: true
+    })
     let allowPets=input.allowPets
     let minRent= input.minRent !== '' ? input.minRent : 0
     let maxRent= input.maxRent !== '' ? input.maxRent : 999999
@@ -95,9 +103,10 @@ class App extends React.Component {
   .then(res => res.json())
   .then((data) => {
     if (data.listings !== undefined) {
-      alert('View Listings')
+      // alert('View Listings')
       this.setState({
         listings: data.listings,
+        loading: false
       })
     } 
     
@@ -132,7 +141,7 @@ class App extends React.Component {
           <PageTabs/>
           <div>
             <Route path="/" exact 
-              render={(routeProps) => <Map {...routeProps} state={this.state} listings={this.state.listings} onSearchSubmit={this.onSearchSubmit} updateAppViewport={this.updateAppViewport} />}
+              render={(routeProps) => <Map {...routeProps} state={this.state} listings={this.state.listings} onSearchSubmit={this.onSearchSubmit} updateAppViewport={this.updateAppViewport} loading={this.state.loading}/>}
             />
             <Route path="/listings" component={Grid} />
             <Route path="/profile" component={Profile} />

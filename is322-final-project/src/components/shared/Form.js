@@ -71,7 +71,7 @@ class Form extends React.Component {
                     />
                 </div>
                 <div className="pet-input-wrapper">
-                <FormLabel component="legend" className="label pets-label">Pet Policy (optional)</FormLabel>
+                <FormLabel component="legend" className="label pets-label">Pet Policy <span className="optional-tag">(optional)</span></FormLabel>
                     <RadioGroup aria-label="gender" name="gender1">
                         <FormControlLabel 
                             value={false}
@@ -89,7 +89,7 @@ class Form extends React.Component {
                         />
                     </RadioGroup>
                 </div>
-                <FormLabel component="legend" className="label">Price (optional)</FormLabel>
+                <FormLabel component="legend" className="label">Price <span className="optional-tag">(optional)</span></FormLabel>
                 <div className="input-wrapper price-wrapper">
                     <TextField 
                         id="outlined-basic" 
@@ -110,7 +110,7 @@ class Form extends React.Component {
                         onChange={(e) => this.setState({ maxRent: e.target.value })}
                     />
                 </div>
-                <FormLabel component="legend" className="label">Baths & Beds (optional)</FormLabel>
+                <FormLabel component="legend" className="label">Baths & Beds <span className="optional-tag">(optional)</span></FormLabel>
                 <div className="input-wrapper price-wrapper">
                     <TextField 
                         id="outlined-basic" 

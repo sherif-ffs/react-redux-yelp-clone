@@ -9,10 +9,12 @@
     position: fixed;
     left: 99%;
     /* top: 0%; */
-    margin-left: -450px; /*half the width*/
+    margin-left: -30%; /*half the width*/
     z-index: 999!important;
     transition: .2s;
     transition-timing-function: ease-in-out;
+    border-radius: 3px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, .6);
 }
 .title-wrapper {
     display: flex;
@@ -77,6 +79,11 @@
     font-size: .9rem!important;
     font-weight: 600!important;
     color: #3e51b5!important;
+}
+.optional-tag {
+    color: #bbb9b9;
+    font-weight: 100;
+    font-size: .9em!important;
 }
 .price-wrapper {
     margin-top: 2vh;

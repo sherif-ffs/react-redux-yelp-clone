@@ -2,6 +2,7 @@ import React from "react";
 
 import ReactMap, { Marker, Popup } from "react-map-gl"
 import Form from '../shared/Form'
+import LoadingScreen from '../shared/LoadingScreen'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import { Link } from 'react-router-dom'
@@ -60,6 +61,8 @@ closeForm = () => {
   render() { 
     // console.log('this.props.state.listings: ', this.props.state.listings)
     return(
+      this.props.loading ? <LoadingScreen>loading</LoadingScreen>
+      :
       <ReactMap
         {...this.state.viewport}
         mapboxApiAccessToken={this.props.state.token}
@@ -69,7 +72,6 @@ closeForm = () => {
             this.setState({ viewport: viewport })
         }}
       >
-      <div className="form"></div>
       {this.props.state.listings.map((listing) => (
           <Marker
             key={listing.listing_id}
