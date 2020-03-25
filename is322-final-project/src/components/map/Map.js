@@ -3,6 +3,7 @@ import React from "react";
 import ReactMap, { Marker, Popup } from "react-map-gl"
 import Form from '../shared/Form'
 import LoadingScreen from '../shared/LoadingScreen'
+import ApartmentModal from './ApartmentModal'
 import SearchIcon from '@material-ui/icons/Search';
 import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
 import { Link } from 'react-router-dom'
@@ -59,7 +60,7 @@ closeForm = () => {
 }
 
   render() { 
-    // console.log('this.props.state.listings: ', this.props.state.listings)
+    console.log('this.props.state.listings: ', this.props.state.listings)
     return(
       this.props.loading ? <LoadingScreen>loading</LoadingScreen>
       :
@@ -68,7 +69,6 @@ closeForm = () => {
         mapboxApiAccessToken={this.props.state.token}
         mapStyle="mapbox://styles/sherif-ffs/ck83l6omf28bw1iqw07lrngts"
         onViewportChange={viewport => {
-            // console.log('viewport: ', viewport)
             this.setState({ viewport: viewport })
         }}
       >
@@ -91,21 +91,27 @@ closeForm = () => {
       ))}
       {this.state.selectedListing ? (
           <Popup
+            className="popup"
             latitude={this.state.selectedListing.lat}
             longitude={this.state.selectedListing.lon}
             onClose={() => {this.setState({
                 selectedListing: null
             })}}
           >
-              <div>
-                  <h2>{this.state.selectedListing.price}</h2>
-                  <h3>{this.state.selectedListing.sqft_raw}</h3>
-                  <h3>{this.state.selectedListing.prop_type}</h3>
-                  <h3>{this.state.selectedListing.id}</h3>
-                  <Link to={`listing/${this.state.selectedListing.listing_id}&${this.state.selectedListing.property_id}`}>
-                    view details
-                  </Link>
-              </div>
+            <ApartmentModal
+              address={this.state.selectedListing.address}
+              price={this.state.selectedListing.price}
+              photo={this.state.selectedListing.photo}
+              beds={this.state.selectedListing.beds}
+              squareFeet={this.state.selectedListing.sqft}
+              listingId={this.state.selectedListing.listing_id}
+              propertyId={this.state.selectedListing.property_id}
+              latitude={this.state.selectedListing.lat}
+              longitude={this.state.selectedListing.lon}
+              onClose={() => {this.setState({
+                  selectedListing: null
+              })}}
+            ></ApartmentModal>
           </Popup>
       ) : null}
       {this.state.showForm ? <Form closeForm={this.closeForm} onSubmit={this.props.onSearchSubmit}></Form> : <SearchIcon className="circle" onClick={() => this.setState({ showForm: true})}></SearchIcon>}

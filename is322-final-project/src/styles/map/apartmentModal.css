@@ -1,0 +1,104 @@
+.apartment-modal-container {
+    height: min-content;
+    width: 30vw;
+    display: flex;
+    cursor: default;
+    flex-direction: column;
+}
+.apartment-modal-banner {
+    width: 100%;
+    display: flex;
+    flex: .5;
+    padding: 2px;
+    background-color: #3e51b5;
+    color: #f5f5f5;
+    flex-direction: row;
+    margin-bottom: 1%;
+}
+@media screen and (min-width: 1900px) {
+    .apartment-modal-container {
+        width: 25vw;
+    }
+    .right-side {
+        display: flex;
+        flex: 1;
+        padding: 0px;
+        margin-left: -5%;
+        margin-top: 3%;
+        flex-direction: column;
+    }
+}
+.apartment-modal-banner__title {
+    font-size: 1.1rem;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex: 5;
+}
+.favorite-icon {
+    display: flex;
+    flex: 1;
+    margin-top: 1%;
+    font-size: 1.8rem!important;
+}
+.favorite-icon:hover {
+    cursor: pointer;
+}
+.apartment-modal-details {
+    width: 100%;
+    display: flex;
+    flex: 4;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+    flex-direction: row;
+}
+.left-side {
+    display: flex;
+    flex: 1;
+    padding: 0px;
+    margin: 0px;
+}
+.right-side {
+    display: flex;
+    flex: 1;
+    padding: 0px;
+    margin-left: 3%;
+    margin-top: 3%;
+    flex-direction: column;
+}
+.apartment-modal-photo {
+    width: 100%;
+    height: auto;
+}
+.right-side__price {
+    padding: 0px;
+    font-size: 1.6rem;
+    margin: 0px;
+}
+.right-side__beds {
+    padding: 0px;
+    font-weight: 100;
+    opacity: .7;
+    font-size: 1.1rem;
+    margin: 0px;
+}
+.right-side__square-feet {
+    padding: 0px;
+    font-weight: 100;
+    opacity: .7;
+    font-size: 1.1rem;
+    margin: 0px;
+}
+
+.view-details {
+    text-decoration: none;
+    background-color: Red;
+    width: 80%;
+    color: #f5f5f5!important;
+    border-radius: 3px;
+    margin-top: 6%!important;
+}
+.view-details-link {
+    color: #f5f5f5;
+    text-decoration: none;
+}
