@@ -3,11 +3,10 @@ import { BrowserRouter, Route } from 'react-router-dom';
 
 import axios from 'axios';
 import 'axios-progress-bar/dist/nprogress.css'
-import { loadProgressBar } from 'axios-progress-bar'
 
 import Map from './components/map/Map'
 import Grid from './components/grid/Grid'
-import ListingDetails from './components/grid/ListingDetails'
+import RestaurauntDetails from './components/shared/RestaurauntDetails'
 import Profile from './components/profile/Profile'
 import PageTabs from './components/PageTabs';
 
@@ -15,125 +14,82 @@ import './styles/app.css'
 
 class App extends React.Component {
   state = {
-    listings: [],
     viewport: {
         latitude: 40.7128,
         longitude: -74.0060,
-        zoom: 11,
+        zoom: 12,
         width: '100vw',
         height: '90vh',
     },
     token:'pk.eyJ1Ijoic2hlcmlmLWZmcyIsImEiOiJjazgyNGFoM3Mwd29qM2xsbml4eHIyNm9qIn0.k8-uELDQoHBgpiITyyc6pg',
-    searchInput: {
-      city: '',
-      state: '',
-      radius: 10,
-      allowPets: false,
-      minRent: '',
-      maxRent: '',
-      minBeds: '',
-      minBaths: ''
-    },
+    restauraunts: [],
     loading: false
   }
-  updateAppViewport = () => {
-    let latitudes = 0;
-    this.state.listings.forEach(listing => {
-      latitudes += listing.lat
-    })
-    let longitudes = 0;
-    this.state.listings.forEach(listing => {
-      longitudes += listing.lon
-    })
-    let newViewport = {
-      latitude: latitudes / this.state.listings.length,
-      longitude: longitudes / this.state.listings.length,
-      zoom: 11,
-      width: '100vw',
-      height: '90vh',
-   }
-   this.setState({
-     viewport: newViewport
-   })
-  }
-
   onSearchSubmit = (payLoad) => {
     if (payLoad.city === '') {
       alert('enter a city name')
     }
-    if (payLoad.state === '') {
-      alert('enter a state name')
-    }
     this.setState({
-      searchInput: payLoad
+      searchInput: payLoad,
+      loading: true
     })
-    this.testApi(payLoad)
+    let offset=0
+    for (let i=0; i<2; i++) {
+      this.callYelpApi(offset, payLoad)
+      offset+=50
+    }
+  }
+
+  restaurauntList = []
+  callYelpApi(offset, payLoad) {
+    let city
+    if (payLoad !== undefined) {
+      city = payLoad.city
+    } else {
+      city = "New York City"
+    }
+    axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/search?location=${city}&term=food&limit=50&offset=${offset}`, {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+      },
+        params: {
+        categories: 'food',
+      }
+      })
+      .then((res) => {
+      res.data.businesses.forEach(res => {
+        this.restaurauntList.push(res)
+      })
+      let newViewport = {
+        latitude: res.data.region.center.latitude,
+        longitude: res.data.region.center.longitude,
+        zoom: 12,
+        width: '100vw',
+        height: '90vh',
+      }
+      this.setState({
+        restauraunts: this.restaurauntList,
+        loading: false,
+        viewport: newViewport
+      })
+      })
+      .catch((err) => {
+      console.log (err)
+    })
+    this.restaurauntList = []
   }
 
   componentDidMount() {
-    this.callApi()
-  }
-
-  testApi(input) {
     this.setState({
       loading: true
     })
-    let allowPets=input.allowPets
-    let minRent= input.minRent !== '' ? input.minRent : 0
-    let maxRent= input.maxRent !== '' ? input.maxRent : 999999
-    let radius=input.radius
-    let minBeds=input.minBeds
-    let minBaths=input.minBaths
-    let state=input.state
-    let city=input.city
-    let queryString;
-
-    if (allowPets === false) {
-      queryString = `https://realtor.p.rapidapi.com/properties/list-for-rent?no_pets_allowed=true&price_min=${minRent}&price_max=${maxRent}&radius=${radius}&beds_min=${minBeds}&sort=relevance&baths_min=${minBaths}&state_code=${state}&limit=200&city=${city}&offset=0`;
-    } else {
-      queryString = `https://realtor.p.rapidapi.com/properties/list-for-rent?allows_dogs=true&allows_cats=true&price_min=${minRent}&price_max=${maxRent}&radius=${radius}&beds_min=${minBeds}&sort=relevance&baths_min=${minBaths}&state_code=${state}&limit=200&city=${city}&offset=0`
+    let offset=0
+    for (let i=0; i<7; i++) {
+      this.callYelpApi(offset)
+      offset+=50
     }
-    fetch(queryString, {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "realtor.p.rapidapi.com",
-      "x-rapidapi-key": "fd98d4c4aamshd0b0e63a32e7ed0p1aba23jsn3975c7acf7d1"
-    }
-    })
-  .then(res => res.json())
-  .then((data) => {
-    if (data.listings !== undefined) {
-      // alert('View Listings')
-      this.setState({
-        listings: data.listings,
-        loading: false
-      })
-    } 
-    
-  })
-  .catch(err => {
-    console.log(err);
-  });
-
   }
-  callApi() {
-    fetch("https://realtor.p.rapidapi.com/properties/list-for-rent?radius=10&sort=relevance&state_code=NY&limit=200&city=New%20York%20City&offset=0", {
-    "method": "GET",
-    "headers": {
-      "x-rapidapi-host": "realtor.p.rapidapi.com",
-      "x-rapidapi-key": "fd98d4c4aamshd0b0e63a32e7ed0p1aba23jsn3975c7acf7d1"
-    }
-    })
-  .then(res => res.json())
-  .then((data) => {
-    this.setState({
-        listings: data.listings
-    })
-  })
-  .catch(err => {
-    console.log(err);
-  });
-  }
+
   render() {
     return (
       <div>
@@ -141,11 +97,11 @@ class App extends React.Component {
           <PageTabs/>
           <div>
             <Route path="/" exact 
-              render={(routeProps) => <Map {...routeProps} state={this.state} listings={this.state.listings} onSearchSubmit={this.onSearchSubmit} updateAppViewport={this.updateAppViewport} loading={this.state.loading}/>}
+              render={(routeProps) => <Map {...routeProps} state={this.state} listings={this.state.listings} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
             />
-            <Route path="/listings" component={Grid} />
+            <Route path="/restauraunts" component={Grid} />
             <Route path="/profile" component={Profile} />
-            <Route path="/listing/:id" component={ListingDetails} />
+            <Route path="/restauraunts/:id" component={RestaurauntDetails} />
           </div>
         </BrowserRouter>
       </div>

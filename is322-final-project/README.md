@@ -9,14 +9,6 @@
 - [x] lift up state
 - [x] make apartment details page
 - [x] display error message when there are no details for the apartment
-- [ ] update styles
-
-
-###### Form Todo 
-- [x] search by state, city, radius
-- [x] pets, no pets allowed (radio)
-- [x] price min
-- [x] beds min 
-- [x] submit button
-- [x] get map to sync with form search
+- [x] update styles
+- [x] switch to yelp api...
 

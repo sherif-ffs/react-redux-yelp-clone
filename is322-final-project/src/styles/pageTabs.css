@@ -47,6 +47,7 @@
     margin-left: 2.5vw;
     margin-right: 2.5vw;
 }
+
 .page-tabs .nav-link {
     cursor: pointer;
 	/* color: #cac8c8; */
@@ -60,7 +61,7 @@
 
 .page-tabs .nav-link.active {
 	/* color: #cac8c8; */
-    color: #3e51b5;
+    color: #DE3C4B;
     opacity: 1;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
     /* font-weight: 500; */

@@ -23,7 +23,7 @@ class PageTabs extends React.Component {
                     onClick={event => this.onTabClick(event, '/')}
                     style={{ textDecoration: 'none' }}
                     >
-                ApartmentHub
+                FoodPornHub
             </Link>
         </h1>
         <div className="nav-item-wrapper">
@@ -32,15 +32,15 @@ class PageTabs extends React.Component {
                         onClick={event => this.onTabClick(event, '/')}
                         style={{ textDecoration: 'none' }}
                         >
-                    Map View
+                    Map
                 </Link>
             </li>
             <li className='nav-item'>
-                <Link className={this.isActiveTab('/listings')} to="/listings"
-                        onClick={event => this.onTabClick(event, '/listings')}
+                <Link className={this.isActiveTab('/restauraunts')} to="/restauraunts"
+                        onClick={event => this.onTabClick(event, '/restauraunts')}
                         style={{ textDecoration: 'none' }}
                         >
-                    Listings
+                    Restauraunts
                 </Link>
             </li>
             <li className='nav-item'>

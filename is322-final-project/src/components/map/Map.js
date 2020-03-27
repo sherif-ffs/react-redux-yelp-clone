@@ -3,10 +3,9 @@ import React from "react";
 import ReactMap, { Marker, Popup } from "react-map-gl"
 import Form from '../shared/Form'
 import LoadingScreen from '../shared/LoadingScreen'
-import ApartmentModal from './ApartmentModal'
+import RestaurauntsModal from './RestaurauntsModal'
 import SearchIcon from '@material-ui/icons/Search';
-import HomeRoundedIcon from '@material-ui/icons/HomeRounded';
-import { Link } from 'react-router-dom'
+import LocationOnRoundedIcon from '@material-ui/icons/LocationOnRounded';
 import '../../styles/map/map.css'
 
 class Map extends React.Component {
@@ -26,32 +25,12 @@ class Map extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.state.listings !== this.props.state.listings) {
-      this.updateViewport()
+    if (prevProps.restauraunts !== this.props.restauraunts) {
+      this.setState({
+        viewport: this.props.state.viewport
+      })
     }
   }
-
-updateViewport = () => {
-  let latitudes = 0;
-  this.props.state.listings.forEach(listing => {
-    latitudes += listing.lat
-  })
-  let longitudes = 0;
-  this.props.state.listings.forEach(listing => {
-    longitudes += listing.lon
-  })
-  let newViewport = {
-    latitude: latitudes / this.props.state.listings.length,
-    longitude: longitudes / this.props.state.listings.length,
-    zoom: 11,
-    width: '100vw',
-    height: '90vh',
- }
- this.setState({
-   viewport: newViewport
- })
- this.props.updateAppViewport()
-}
 
 closeForm = () => {
   this.setState({
@@ -60,23 +39,22 @@ closeForm = () => {
 }
 
   render() { 
-    console.log('this.props.state.listings: ', this.props.state.listings)
     return(
       this.props.loading ? <LoadingScreen>loading</LoadingScreen>
       :
       <ReactMap
         {...this.state.viewport}
         mapboxApiAccessToken={this.props.state.token}
-        mapStyle="mapbox://styles/sherif-ffs/ck83l6omf28bw1iqw07lrngts"
+        mapStyle="mapbox://styles/sherif-ffs/ck89gx93002vs1inzl1nxvwyx"
         onViewportChange={viewport => {
             this.setState({ viewport: viewport })
         }}
       >
-      {this.props.state.listings.map((listing) => (
+      {this.props.restauraunts.map((listing) => (
           <Marker
-            key={listing.listing_id}
-            latitude={listing.lat}
-            longitude={listing.lon}
+            // key={listing.id}
+            latitude={listing.coordinates.latitude}
+            longitude={listing.coordinates.longitude}
           >
               <div 
                 className="apartment-button"
@@ -86,32 +64,33 @@ closeForm = () => {
                         selectedListing: listing
                     })
                 }}
-              ><HomeRoundedIcon fontSize="medium"/></div>
+              ><LocationOnRoundedIcon fontSize="medium"/></div>
           </Marker>
       ))}
       {this.state.selectedListing ? (
           <Popup
             className="popup"
-            latitude={this.state.selectedListing.lat}
-            longitude={this.state.selectedListing.lon}
+            latitude={this.state.selectedListing.coordinates.latitude}
+            longitude={this.state.selectedListing.coordinates.longitude}
             onClose={() => {this.setState({
                 selectedListing: null
             })}}
           >
-            <ApartmentModal
-              address={this.state.selectedListing.address}
+            <RestaurauntsModal
+              address1={this.state.selectedListing.location.display_address[0]}
+              address2={this.state.selectedListing.location.display_address[1]}
+              photo={this.state.selectedListing.image_url}
+              name={this.state.selectedListing.name}
+              rating={this.state.selectedListing.rating}
               price={this.state.selectedListing.price}
-              photo={this.state.selectedListing.photo}
-              beds={this.state.selectedListing.beds}
-              squareFeet={this.state.selectedListing.sqft}
-              listingId={this.state.selectedListing.listing_id}
-              propertyId={this.state.selectedListing.property_id}
-              latitude={this.state.selectedListing.lat}
-              longitude={this.state.selectedListing.lon}
+              categories={this.state.selectedListing.categories}
+              latitude={this.state.selectedListing.coordinates.latitude}
+              longitude={this.state.selectedListing.coordinates.longitude}
+              id={this.state.selectedListing.id}
               onClose={() => {this.setState({
                   selectedListing: null
               })}}
-            ></ApartmentModal>
+            ></RestaurauntsModal>
           </Popup>
       ) : null}
       {this.state.showForm ? <Form closeForm={this.closeForm} onSubmit={this.props.onSearchSubmit}></Form> : <SearchIcon className="circle" onClick={() => this.setState({ showForm: true})}></SearchIcon>}

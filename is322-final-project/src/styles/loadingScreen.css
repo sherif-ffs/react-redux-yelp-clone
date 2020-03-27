@@ -1,7 +1,7 @@
 .loading-container {
     width: 100vw;
     height: 90vh;
-    background-color: #3e51b5;
+    background-color: #DE3C4B;
 }
 .loading-svg {
     width: 20%;
@@ -11,7 +11,7 @@
     display:inline-block;
   }
 .loading-title {
-    color: #526DF2;
+    color: #b12937;
     font-family: Lato, Avenir, Arial, Helvetica, sans-serif;
     text-align: center;
     padding-top: 15vh;

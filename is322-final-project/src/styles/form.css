@@ -1,5 +1,5 @@
 .form-wrapper {
-    width: 30vw;
+    width: 23vw;
     height: min-content;
     padding-bottom: 20px;
     cursor: default!important;
@@ -9,7 +9,7 @@
     position: fixed;
     left: 99%;
     /* top: 0%; */
-    margin-left: -30%; /*half the width*/
+    margin-left: -23%; /*half the width*/
     z-index: 999!important;
     transition: .2s;
     transition-timing-function: ease-in-out;
@@ -19,6 +19,7 @@
 .title-wrapper {
     display: flex;
     flex-direction: row;
+    margin-bottom: -2vh;
 }
 .title-wrapper__title {
     margin-top: 3vh;
@@ -48,7 +49,7 @@
 .input-wrapper {
     display: flex;
     flex-direction: row;
-    width: 95%;
+    width: 100%;
     margin-left: 2.5%;
     margin-top: 2vh;
 }
@@ -57,13 +58,22 @@
     display: flex!important;
 }
 .city {
-    flex:.8;
+    flex:.9;
+    border-radius: 5px!important;
+}
+.city:focus {
+    color: red!important;
+    border: 3px solid red!important;
 }
 .state {
     flex:.4;
 }
 .radius {
     flex:.5;
+}
+.price {
+    flex:1;
+    width: 90%;
 }
 .pet-input-wrapper {
     margin-top: 3vh;
@@ -78,7 +88,7 @@
     margin-left: 5%;
     font-size: .9rem!important;
     font-weight: 600!important;
-    color: #3e51b5!important;
+    color: #DE3C4B!important;
 }
 .optional-tag {
     color: #bbb9b9;
@@ -90,16 +100,26 @@
 }
 
 .search-button {
-    background-color: #3e51b5!important;
+    background-color: #DE3C4B!important;
     border-radius: 5px!important;
     margin-left: 5%!important;
     color: #fafafa!important;
-    margin-top: 2vh!important;
+    margin-top: 1vh!important;
     width: 40%!important;
     font-family: 'Lato', Helvetica,Arial , sans-serif!important;
+    font-weight: 600;
     font-size: 1.3rem!important;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, .6);
+    transition: .2s;
+    transition-timing-function: ease-in-out;
+}
+.search-button:hover {
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, .6);    
+    transition: .2s;
+    transition-timing-function: ease-in-out;
 }
 .search-icon {
-    margin-left: 5%!important;
-    font-size: 1.8rem!important;
+    margin-left: 8%!important;
+    margin-top: 2%!important;
+    font-size: 1.5rem!important;
 }
