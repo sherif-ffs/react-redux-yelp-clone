@@ -1,0 +1,150 @@
+.wrapper {
+    border: 1px solid red;
+}
+.header {
+    display: flex;
+    margin-top: 4%;
+    flex-direction: row;
+}
+.slideshow-wrapper {
+    margin-left: 5%;
+}
+.header-information-wrapper {
+    padding: 0;
+    margin: 0;
+    margin-left: 8%;
+    margin-top: 5%;
+    text-align: left;
+}
+.restauraunt-title {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1vh;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.ratings {
+    margin-top: 25px;
+}
+.rating-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vh;
+}
+.price-rating-tags {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vh;
+}
+.rating-count {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    margin-top: 1vh;
+    margin-left: 1vh;
+    opacity: .85;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.restauraunt-price {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #DE3C4B;
+    padding: 0;
+    margin: 0;
+    margin-right: 1vw;
+    opacity: .85;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.restauraunt-tags {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    opacity: .85;
+    margin-top: 1vh;    
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.restauraunt-phone-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vh;
+}
+.phone-icon {
+    font-size: 2.3rem!important;
+    color: #DE3C4B;
+    margin-right: .5vw;
+}
+.restauraunt-phone {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    margin-top: 1vh;
+    opacity: .85;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.restauraunt-address-wrapper {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vh;
+}
+.address-icon {
+    font-size: 2.3rem!important;
+    color: #DE3C4B;
+    margin-right: .5vw;
+}
+.restauraunt-address {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    margin-top: 1vh;
+    opacity: .85;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.restauraunt-is-open {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1vh;
+}
+.is-open-icon {
+    font-size: 2.3rem!important;
+    color: #DE3C4B;
+    margin-right: .5vw;
+}
+.is-open-text {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    margin-top: .4vh;
+    opacity: .85;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.is-open-emoji {
+    font-size: 1.4rem;
+    margin-top: 1vh;
+}
+.reviews-location-hours-wrapper {
+    width: 100%;
+    border: 1px solid red;
+    display: flex;
+    flex-direction: row;
+}
+.reviews-container {
+    display: flex;
+    flex: 2;
+    border: 1px solid blue;
+}
+.location-and-hours-container {
+    flex: 1;
+    border: 1px solid blue;    
+}

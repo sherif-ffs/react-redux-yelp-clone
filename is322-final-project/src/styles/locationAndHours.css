@@ -1,0 +1,5 @@
+.location-and-hours-wrapper {
+    display: flex;
+    flex: 1;
+    border: 1px solid blue;
+}

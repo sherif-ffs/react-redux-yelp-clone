@@ -11,4 +11,7 @@
 - [x] display error message when there are no details for the apartment
 - [x] update styles
 - [x] switch to yelp api...
-
+- [x] add restauraunt details 
+- [ ] add mini map
+- [ ] add hours 
+- [ ] make new folder for restauraunt details components 

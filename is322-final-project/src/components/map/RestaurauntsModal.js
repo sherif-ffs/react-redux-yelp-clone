@@ -38,7 +38,7 @@ class RestaurauntsModal extends React.Component {
                             starEmptyColor='#d3d1d1'
                         ></StarRatings>
                         <Button className="view-details" variant="contained" color="primary">
-                            <Link to={`listing/${this.props.id}`} className="view-details-link">
+                            <Link to={`restauraunt/${this.props.id}`} className="view-details-link">
                             view details
                             </Link>
                         </Button>

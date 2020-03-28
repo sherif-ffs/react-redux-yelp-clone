@@ -15,12 +15,12 @@ import '../../styles/slideShow.css'
         onChange: (oldIndex, newIndex) => {
           console.log(`slide transition from ${oldIndex} to ${newIndex}`);
         }
-      }
+    }
       const slideImages = props.photos
       const slides = slideImages.map((slide, index) => {
         return (
             <div className="each-slide" key={index}>
-                <div style={{'backgroundImage': `url(${slide.href})`}} className="slide-image"></div>
+                <div style={{'backgroundImage': `url(${slide})`}} className="slide-image"></div>
             </div>
         )
       })

@@ -101,7 +101,7 @@ class App extends React.Component {
             />
             <Route path="/restauraunts" component={Grid} />
             <Route path="/profile" component={Profile} />
-            <Route path="/restauraunts/:id" component={RestaurauntDetails} />
+            <Route path="/restauraunt/:id" component={RestaurauntDetails} />
           </div>
         </BrowserRouter>
       </div>

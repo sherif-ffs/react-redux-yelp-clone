@@ -1,0 +1,41 @@
+.user-review-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+}
+.profile-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    margin-left: 5%;
+}
+.profile-icon {
+    font-size: 4rem!important;
+    border-radius: 3px;
+    color: #d3d1d1;
+}
+.profile-name {
+    font-size: 1rem;
+    margin-top: -3px;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+    color: #323648;
+}
+.review-content-wrapper {
+    display: flex;
+    flex: 6;
+    /* margin-left: 2%; */
+    flex-direction: column;
+}
+.review-text {
+
+}
+.review-content-wrapper button {
+    margin-top: 2vh;
+    background-color: #DE3C4B;
+    color: #fafafa;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+    font-weight: 900;
+}
+.review-content-wrapper button:hover {
+    background-color: rgb(204, 48, 64);
+}
