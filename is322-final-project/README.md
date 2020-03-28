@@ -12,6 +12,7 @@
 - [x] update styles
 - [x] switch to yelp api...
 - [x] add restauraunt details 
-- [ ] add mini map
-- [ ] add hours 
+- [x] add mini map
+- [x] add hours 
 - [ ] make new folder for restauraunt details components 
+- [ ] map reviews

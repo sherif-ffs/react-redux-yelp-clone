@@ -98,24 +98,25 @@ class RestaurauntDetails extends React.Component {
                             <RoomRoundedIcon className="address-icon"></RoomRoundedIcon>
                             <h3 className="restauraunt-address">{this.state.restauraunt.location.display_address[0]}, {this.state.restauraunt.location.display_address[1]}</h3>
                             </div>
-                            {this.state.restauraunt.hours.is_open_now 
-                            ? 
-                            <div className="restauraunt-is-open">
-                                <EventAvailableIcon className="is-open-icon"></EventAvailableIcon>
-                                <h3 className="is-open-text">We're open <span className="is-open-emoji">😋</span></h3>
-                            </div>
-                            :
-                            <div className="restauraunt-is-open">
-                                <EventBusyIcon className="is-open-icon"></EventBusyIcon>
-                                <h3 className="is-open-text">We're closed <span className="is-open-emoji">😔</span></h3>
-                            </div>
+                            {this.state.restauraunt.hours !== undefined ? 
+                            (this.state.restauraunt.hours.is_open_now 
+                                ? 
+                                <div className="restauraunt-is-open">
+                                    <EventAvailableIcon className="is-open-icon"></EventAvailableIcon>
+                                    <h3 className="is-open-text">We're open <span className="is-open-emoji">😋</span></h3>
+                                </div>
+                                :
+                                <div className="restauraunt-is-open">
+                                    <EventBusyIcon className="is-open-icon"></EventBusyIcon>
+                                    <h3 className="is-open-text">We're closed <span className="is-open-emoji">😔</span></h3>
+                                </div>)
+                                : ''
                             }
-
                         </div>
                     </div>
                     <div className="reviews-location-hours-wrapper">
                     <Reviews reviews={this.state.reviews}></Reviews>
-                    <LocationAndHours></LocationAndHours>
+                    <LocationAndHours coordinates={this.state.restauraunt.coordinates} hours={this.state.restauraunt.hours}></LocationAndHours>
                     </div>
                 </React.Fragment>
             : <LoadingScreen></LoadingScreen>)

@@ -12,9 +12,6 @@ import '../../styles/slideShow.css'
         indicators: true,
         arrows: true,
         pauseOnHover: true,
-        onChange: (oldIndex, newIndex) => {
-          console.log(`slide transition from ${oldIndex} to ${newIndex}`);
-        }
     }
       const slideImages = props.photos
       const slides = slideImages.map((slide, index) => {

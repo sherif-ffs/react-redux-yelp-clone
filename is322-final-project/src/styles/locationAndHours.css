@@ -1,5 +1,16 @@
 .location-and-hours-wrapper {
     display: flex;
-    flex: 1;
-    border: 1px solid blue;
+    flex: 1.5;
+    margin-top: 5%;
+    margin-left: 3%;
+    flex-direction: column;
+}
+.location-and-hours-wrapper-title {
+    font-size: 1.7rem;
+    font-weight: 900;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1vh;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
 }

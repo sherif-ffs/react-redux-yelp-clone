@@ -6,7 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 
 import '../../styles/reviewForm.css'
-
+// import '../../../assets/scout-head.png'
 class ReviewForm extends React.Component {
     
     state = {
@@ -23,7 +23,8 @@ class ReviewForm extends React.Component {
         return (
             <div className="user-review-wrapper">
                 <div className="profile-wrapper">
-                    <PersonIcon className="profile-icon"></PersonIcon>
+                    {/* <PersonIcon className="profile-icon"></PersonIcon> */}
+                    <img src={"../../../assets/scout-head.png"} className="profile-icon"></img>
                     <h1 className="profile-name">John Doe</h1>
                 </div>
                 <div className="review-content-wrapper">
