@@ -14,5 +14,7 @@
 - [x] add restauraunt details 
 - [x] add mini map
 - [x] add hours 
-- [ ] make new folder for restauraunt details components 
-- [ ] map reviews
+- [x] make new folder for restauraunt details components 
+- [x] map reviews
+- [ ] allow user to add review
+- [ ] allow user to sort reviews

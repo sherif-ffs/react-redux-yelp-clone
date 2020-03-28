@@ -4,6 +4,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import StarRatings from 'react-star-ratings';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
+import scoutHead from '../../assets/scout-head.png'
 
 import '../../styles/reviewForm.css'
 // import '../../../assets/scout-head.png'
@@ -18,13 +19,12 @@ class ReviewForm extends React.Component {
           rating: newRating
         });
       }
-
+    
     render() {
         return (
             <div className="user-review-wrapper">
                 <div className="profile-wrapper">
-                    {/* <PersonIcon className="profile-icon"></PersonIcon> */}
-                    <img src={"../../../assets/scout-head.png"} className="profile-icon"></img>
+                    <PersonIcon className="profile-icon"></PersonIcon>
                     <h1 className="profile-name">John Doe</h1>
                 </div>
                 <div className="review-content-wrapper">

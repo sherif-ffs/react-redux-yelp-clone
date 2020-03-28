@@ -1,6 +1,6 @@
 import React from 'react'
 
-import LoadingScreen from './LoadingScreen'
+import LoadingScreen from '../shared/LoadingScreen'
 import SlideShow from './SlideShow'
 import axios from 'axios';
 import '../../styles/restaurauntDetails.css'
@@ -41,27 +41,27 @@ class RestaurauntDetails extends React.Component {
             .catch((err) => {
             console.log ('error')
         })
-        // axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.match.params.id}/reviews`, {
-        //     headers: {
-        //     Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
-        //     },
-        //     })
-        //     .then((res) => {
-        //     console.log('res: ', res)
-        //     this.setState({
-        //         reviews: res.data.reviews
-        //     })
-        //     })
-        //     .catch((err) => {
-        //     console.log ('error')
-        // })
+        axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.match.params.id}/reviews`, {
+            headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_API_KEY}`
+            },
+            })
+            .then((res) => {
+            console.log('res: ', res)
+            this.setState({
+                reviews: res.data.reviews
+            })
+            })
+            .catch((err) => {
+            console.log ('error')
+        })
     }
     
 
 
     render() {        
         console.log('this.props: ', this.props)
-        console.log('this.state.restauraunt: ', this.state.restauraunt)
+        console.log('this.state: ', this.state)
         
         return (
             this.state.restauraunt == null ?
@@ -98,7 +98,7 @@ class RestaurauntDetails extends React.Component {
                             <RoomRoundedIcon className="address-icon"></RoomRoundedIcon>
                             <h3 className="restauraunt-address">{this.state.restauraunt.location.display_address[0]}, {this.state.restauraunt.location.display_address[1]}</h3>
                             </div>
-                            {this.state.restauraunt.hours !== undefined ? 
+                            {this.state.restauraunt.hours ? 
                             (this.state.restauraunt.hours.is_open_now 
                                 ? 
                                 <div className="restauraunt-is-open">

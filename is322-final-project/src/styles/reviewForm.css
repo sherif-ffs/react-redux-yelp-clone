@@ -1,7 +1,7 @@
 .user-review-wrapper {
     display: flex;
     flex-direction: row;
-    width: 60%;
+    width: 70%;
 }
 .profile-wrapper {
     display: flex;
@@ -14,6 +14,10 @@
     border-radius: 3px;
     color: #d3d1d1;
 }
+.profile-icon-scout {
+    width: 85px;
+    height: auto;
+}
 .profile-name {
     font-size: 1rem;
     margin-top: -3px;
@@ -23,12 +27,9 @@
 .review-content-wrapper {
     display: flex;
     flex: 6;
-    /* margin-left: 2%; */
     flex-direction: column;
 }
-.review-text {
 
-}
 .review-content-wrapper button {
     margin-top: 2vh;
     background-color: #DE3C4B;

@@ -6,7 +6,7 @@ import 'axios-progress-bar/dist/nprogress.css'
 
 import Map from './components/map/Map'
 import Grid from './components/grid/Grid'
-import RestaurauntDetails from './components/shared/RestaurauntDetails'
+import RestaurauntDetails from './components/restaurauntDetails/RestaurauntDetails'
 import Profile from './components/profile/Profile'
 import PageTabs from './components/PageTabs';
 

@@ -7,6 +7,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import SearchIcon from '@material-ui/icons/Search';
 import ReviewForm from './ReviewForm'
+import Review from './Review'
 
 import '../../styles/reviews.css'
 
@@ -14,10 +15,29 @@ class Reviews extends React.Component {
 
     state = {
         searchInput: '',
-        sortValue: ''
+        sortValue: '',
+        userReviews: '',
     }
-
+    componentDidMount() {
+        this.setState({
+            userReviews: this.props.reviews
+        })
+    }
     render() {
+        console.log('this.props; ', this.props)
+        let userReviews = this.props.reviews.map((rating) => {
+            return (
+                <Review
+                    className="user-review"
+                    date={rating.time_created}
+                    rating={rating.rating}
+                    text={rating.text}
+                    image={rating.user.image_url}
+                    name={rating.user.name}
+                >
+                </Review>
+            )
+        })
         return(
             <div className="reviews-wrapper">
                 <h1 className="section-title">Recommended Reviews</h1>
@@ -29,10 +49,6 @@ class Reviews extends React.Component {
                     <InputBase
                         placeholder="Search reviews…"
                         className="search-bar"
-                        // classes={{
-                        //     root: classes.inputRoot,
-                        //     input: classes.inputInput,
-                        // }}
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </div>
@@ -53,7 +69,7 @@ class Reviews extends React.Component {
                     </FormControl>
                 </div>
                 <ReviewForm></ReviewForm>
-                reviews
+                {userReviews}
             </div>             
         )
     }
