@@ -1,14 +1,8 @@
 import React from 'react'
 
 import TextField from '@material-ui/core/TextField';
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormLabel from '@material-ui/core/FormLabel';
 import { IconButton } from '@material-ui/core';
-import Select from '@material-ui/core/Select';
-import MenuItem from '@material-ui/core/MenuItem';
-import { makeStyles } from '@material-ui/core/styles';
 
 import SearchIcon from '@material-ui/icons/Search';
 import CancelIcon from '@material-ui/icons/Cancel';
@@ -44,6 +38,7 @@ class Form extends React.Component {
                         color="secondary"
                         value={this.state.city}
                         onChange={(e) => this.setState({ city: e.target.value })}
+                        onRequestSearch={() => this.searchTasksByTitle(this.state.searchInput)}
                     />
                 </div>
                 <IconButton color="primary" className="search-button" onClick={this.onSearchSubmit}>

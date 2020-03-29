@@ -1,13 +1,14 @@
 import React from 'react'
 
 import Select from '@material-ui/core/Select';
-import InputBase from '@material-ui/core/InputBase';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
-import SearchIcon from '@material-ui/icons/Search';
 import ReviewForm from './ReviewForm'
 import Review from './Review'
+
+import SearchBar from 'material-ui-search-bar'
+
 
 import '../../styles/reviews.css'
 
@@ -29,7 +30,7 @@ class Reviews extends React.Component {
             return (
                 <Review
                     className="user-review"
-                    date={rating.time_created}
+                    date={rating.time_created ? rating.time_created : new Date()}
                     rating={rating.rating}
                     text={rating.text}
                     image={rating.user.image_url}
@@ -43,12 +44,12 @@ class Reviews extends React.Component {
                 <h1 className="section-title">Recommended Reviews</h1>
                 <div className="reviews-header">
                 <div className="search-bar-wrapper">
-                    <div className="reviews-search-icon">
-                        <SearchIcon />
-                    </div>
-                    <InputBase
+                    <SearchBar
                         placeholder="Search reviews…"
                         className="search-bar"
+                        value={this.state.searchInput}
+                        onChange={(newValue) => this.setState({ searchInput: newValue })}                    
+                        onRequestSearch={() => this.props.onSearchInputChange(this.state.searchInput)}
                         inputProps={{ 'aria-label': 'search' }}
                     />
                 </div>
@@ -59,16 +60,14 @@ class Reviews extends React.Component {
                             id="demo-simple-select"
                             color="secondary"
                             value={this.state.sortValue}
-                            onChange={e => this.setState({sortValue: e.target.value})}
+                            onChange={e => this.props.onSortValueChange(e.target.value)}
                         >
-                        <MenuItem value="newest">Newest First</MenuItem>
-                        <MenuItem value="oldest">Oldest First</MenuItem>
                         <MenuItem value="highest">Highest Rated</MenuItem>
                         <MenuItem value="lowest">Lowest Rated</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
-                <ReviewForm></ReviewForm>
+                <ReviewForm onAddReview={this.props.onAddReview}></ReviewForm>
                 {userReviews}
             </div>             
         )

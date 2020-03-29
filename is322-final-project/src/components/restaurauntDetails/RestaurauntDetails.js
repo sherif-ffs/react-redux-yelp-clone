@@ -19,11 +19,75 @@ class RestaurauntDetails extends React.Component {
         restauraunt: {},
         reviews: [],
         errorMessage: '',
-        photos: []
+        photos: [],
+        sortValue: '',
+        searchInput: ''
     }
+
+    onSortValueChange = (sortValue) => {
+        this.setState({
+            sortValue: sortValue
+        })
+      }
+
+    onSearchInputChange = (searchInput) => {
+        this.setState({
+            searchInput: searchInput
+        })
+    }
+
+    getFilteredReviews() {
+        console.log('this.state: ', this.state)
+        let reviews = this.state.reviews
+
+        let {sortValue, searchInput } = this.state;
+        let sortedReviews;
+    
+        if (!!searchInput) {
+          if (searchInput !== '') {
+            sortedReviews = reviews.filter(review => review.text.toLowerCase().includes(searchInput.trim('').toLowerCase()));
+            return sortedReviews            
+          } else {
+            sortedReviews = reviews
+            return sortedReviews            
+            }
+          }
+        
+        if (!!sortValue) {
+            if (sortValue === 'highest') {
+                console.log('reviews: ', reviews)
+                sortedReviews = reviews.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
+                return sortedReviews
+            } 
+            if (sortValue !== 'all' && sortValue === 'lowest') {
+                sortedReviews = reviews.sort((a, b) => parseFloat(a.rating) - parseFloat(b.rating));
+                return sortedReviews
+            } 
+            else {
+                sortedReviews = reviews;
+                return sortedReviews
+            }
+        }
+
+        return sortedReviews
+
+    }
+
     componentDidMount() {
         this.callApi();
     }
+    onAddReview = (review) => {
+        let { reviews } = this.state;
+        
+        let newReviews = [
+            review,
+            ...reviews
+        ]
+            
+        this.setState({
+            reviews: newReviews
+        }) 
+      }
 
     callApi() {
         axios.get(`${'https://cors-anywhere.herokuapp.com/'}https://api.yelp.com/v3/businesses/${this.props.match.params.id}`, {
@@ -62,7 +126,7 @@ class RestaurauntDetails extends React.Component {
     render() {        
         console.log('this.props: ', this.props)
         console.log('this.state: ', this.state)
-        
+        let sortedReviews = this.getFilteredReviews();
         return (
             this.state.restauraunt == null ?
             <div>No data can be loaded for this apartment</div>
@@ -103,19 +167,19 @@ class RestaurauntDetails extends React.Component {
                                 ? 
                                 <div className="restauraunt-is-open">
                                     <EventAvailableIcon className="is-open-icon"></EventAvailableIcon>
-                                    <h3 className="is-open-text">We're open <span className="is-open-emoji">😋</span></h3>
+                                    <h3 className="is-open-text">We're open <span className="is-open-emoji" role="img" aria-labelledby="yummy-emoji">😋</span></h3>
                                 </div>
                                 :
                                 <div className="restauraunt-is-open">
                                     <EventBusyIcon className="is-open-icon"></EventBusyIcon>
-                                    <h3 className="is-open-text">We're closed <span className="is-open-emoji">😔</span></h3>
+                                    <h3 className="is-open-text">We're closed <span className="is-open-emoji" role="img" aria-labelledby="sad-emoji">😔</span></h3>
                                 </div>)
                                 : ''
                             }
                         </div>
                     </div>
                     <div className="reviews-location-hours-wrapper">
-                    <Reviews reviews={this.state.reviews}></Reviews>
+                    <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange}></Reviews>
                     <LocationAndHours coordinates={this.state.restauraunt.coordinates} hours={this.state.restauraunt.hours}></LocationAndHours>
                     </div>
                 </React.Fragment>

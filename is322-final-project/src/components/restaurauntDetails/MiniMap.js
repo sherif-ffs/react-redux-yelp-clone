@@ -1,6 +1,6 @@
 import React from 'react'
 
-import ReactMap, { Marker, Popup } from "react-map-gl"
+import ReactMap, { Marker } from "react-map-gl"
 import LocationOnRoundedIcon from '@material-ui/icons/LocationOnRounded';
 import LoadingScreen from '../shared/LoadingScreen'
 

@@ -4,14 +4,20 @@ import PersonIcon from '@material-ui/icons/Person';
 import StarRatings from 'react-star-ratings';
 import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
-import scoutHead from '../../assets/scout-head.png'
 
 import '../../styles/reviewForm.css'
-// import '../../../assets/scout-head.png'
+import scoutHead from '../../assets/scout-head.png'
+
 class ReviewForm extends React.Component {
     
     state = {
-        rating: 0
+        rating: 0,
+        text: '',
+        user: {
+            name: 'John Doe',
+            image_url: scoutHead,
+        }
+       
     }
 
     changeRating = ( newRating, name ) => {
@@ -19,7 +25,24 @@ class ReviewForm extends React.Component {
           rating: newRating
         });
       }
-    
+
+      onSubmit(event) {
+        event.preventDefault();
+        this.props.onAddReview({
+          rating: this.state.rating,
+          text: this.state.text,
+          user: {
+            name: 'John Doe',
+            image_url: scoutHead,
+          },
+          time_created: new Date().toString()
+        });
+        this.setState({
+            rating: 0,
+            text: '',
+        })
+      }
+
     render() {
         return (
             <div className="user-review-wrapper">
@@ -46,8 +69,10 @@ class ReviewForm extends React.Component {
                         Sauce and cheese ratio was on point. 
                         Will definitely be trying their other pies. 
                         Yes it's pricey, but it is absolutely worth it!"
+                        value={this.state.text}
+                        onChange={e => this.setState({ text: e.target.value})}
                     ></TextField>
-                    <Button color="secondary">Post Review</Button>
+                    <Button color="secondary" type="submit" onClick={this.onSubmit.bind(this)}>Post Review</Button>
                 </div>
             </div>
         )

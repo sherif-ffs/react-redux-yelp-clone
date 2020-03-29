@@ -8,7 +8,7 @@ class Review extends React.Component {
         return (
             <div className="review-wrapper">
                 <div className="user-wrapper">
-                    <img className="user-image" src={this.props.image}></img>
+                    <img className="user-image" src={this.props.image} alt="user-image"></img>
                     <h1 className="user-name">{this.props.name}</h1>
                 </div>
                 <div className="review-content-wrapper">
