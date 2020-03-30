@@ -39,7 +39,6 @@ closeForm = () => {
 }
 
   render() {
-    console.log('this.props: ', this.props)
     return(
       this.props.loading ? <LoadingScreen>loading</LoadingScreen>
       :
@@ -82,6 +81,7 @@ closeForm = () => {
               address2={this.state.selectedListing.location.display_address[1]}
               photo={this.state.selectedListing.image_url}
               name={this.state.selectedListing.name}
+              restauraunt={this.state.selectedListing}
               rating={this.state.selectedListing.rating}
               price={this.state.selectedListing.price}
               categories={this.state.selectedListing.categories}

@@ -8,17 +8,34 @@ import StarRatings from 'react-star-ratings';
 
 import '../../styles/map/restaurauntModal.css'
 
+import { connect } from "react-redux";
+import { saveRestauraunt } from '../../actions/index'
+
+function mapDispatchToProps(dispatch) {
+    return {
+      saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt))
+    };
+  }
+
 class RestaurauntsModal extends React.Component {
 
     state = {
-        iconClicked: false
+        iconClicked: false,
+        restauraunt: ''
     }
-
+    componentDidMount() {
+        this.setState({
+            restauraunt: this.props.restauraunt
+        })
+    }
     onIconClick = () => {
         if (this.state.iconClicked === false) {
             this.setState({
                 iconClicked: true
             })
+            this.props.saveRestauraunt({ 
+                restauraunt: this.state.restauraunt,
+             });
         } else {
             this.setState({
                 iconClicked: false
@@ -63,4 +80,4 @@ class RestaurauntsModal extends React.Component {
     }
 }
 
-export default RestaurauntsModal
+export default connect(null, mapDispatchToProps)(RestaurauntsModal)

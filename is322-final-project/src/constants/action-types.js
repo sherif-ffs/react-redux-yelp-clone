@@ -1,1 +1,3 @@
 export const ADD_REVIEW = "ADD_REVIEW";
+
+export const SAVE_RESTAURAUNT = "SAVE_RESTAURAUNT";

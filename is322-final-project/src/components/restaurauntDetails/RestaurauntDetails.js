@@ -15,6 +15,15 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Reviews from './Reviews'
 import LocationAndHours from './LocationAndHours'
 
+import { connect } from "react-redux";
+import { saveRestauraunt } from '../../actions/index'
+
+function mapDispatchToProps(dispatch) {
+    return {
+      saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt))
+    };
+  }
+
 class RestaurauntDetails extends React.Component {
 
     state = {
@@ -32,6 +41,9 @@ class RestaurauntDetails extends React.Component {
             this.setState({
                 iconClicked: true
             })
+            this.props.saveRestauraunt({ 
+                restauraunt: this.state.restauraunt,
+             });
         } else {
             this.setState({
                 iconClicked: false
@@ -203,4 +215,5 @@ class RestaurauntDetails extends React.Component {
     }
 }
 
-export default RestaurauntDetails
+// export default RestaurauntDetails
+export default connect(null, mapDispatchToProps)(RestaurauntDetails)
