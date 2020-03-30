@@ -23,14 +23,15 @@ class App extends React.Component {
     },
     token:'pk.eyJ1Ijoic2hlcmlmLWZmcyIsImEiOiJjazgyNGFoM3Mwd29qM2xsbml4eHIyNm9qIn0.k8-uELDQoHBgpiITyyc6pg',
     restauraunts: [],
-    loading: false
+    loading: false,
+    searchInput: 'New York City'
   }
   onSearchSubmit = (payLoad) => {
     if (payLoad.city === '') {
       alert('enter a city name')
     }
     this.setState({
-      searchInput: payLoad,
+      searchInput: payLoad.city,
       loading: true
     })
     let offset=0
@@ -100,7 +101,7 @@ class App extends React.Component {
               render={(routeProps) => <Map {...routeProps} state={this.state} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
             />
             <Route path="/restauraunts"
-              render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
+              render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} />}
              />
             <Route path="/profile" component={Profile} />
             <Route path="/restauraunt/:id" component={RestaurauntDetails} />

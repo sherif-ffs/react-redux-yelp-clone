@@ -23,11 +23,13 @@ class RestaurauntsModal extends React.Component {
         iconClicked: false,
         restauraunt: ''
     }
+    
     componentDidMount() {
         this.setState({
             restauraunt: this.props.restauraunt
         })
     }
+
     onIconClick = () => {
         if (this.state.iconClicked === false) {
             this.setState({

@@ -20,3 +20,7 @@
 - [x] allow user to sort & search reviews
 - [x] remove warnings
 - [x] get started avec redux
+- [x] create card layout for restauraunts
+- [ ] allow user to sort by price, highest-lowest rating, most reviewed
+- [ ] allow user to search from grid layout
+
