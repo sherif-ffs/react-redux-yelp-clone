@@ -16,5 +16,7 @@
 - [x] add hours 
 - [x] make new folder for restauraunt details components 
 - [x] map reviews
-- [ ] allow user to add review
-- [ ] allow user to sort reviews
+- [x] allow user to add review
+- [x] allow user to sort & search reviews
+- [x] remove warnings
+- [x] get started avec redux

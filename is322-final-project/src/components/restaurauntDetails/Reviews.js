@@ -25,7 +25,6 @@ class Reviews extends React.Component {
         })
     }
     render() {
-        console.log('this.props; ', this.props)
         let userReviews = this.props.reviews.map((rating) => {
             return (
                 <Review
@@ -67,7 +66,7 @@ class Reviews extends React.Component {
                         </Select>
                     </FormControl>
                 </div>
-                <ReviewForm onAddReview={this.props.onAddReview}></ReviewForm>
+                <ReviewForm onAddReview={this.props.onAddReview} name={this.props.name}></ReviewForm>
                 {userReviews}
             </div>             
         )

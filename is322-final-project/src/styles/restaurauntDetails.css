@@ -13,6 +13,10 @@
     margin-top: 5%;
     text-align: left;
 }
+.title-wrapper {
+    display: flex;
+    flex-direction: row;
+}
 .restauraunt-title {
     font-size: 2.5rem;
     font-weight: 900;
@@ -22,18 +26,32 @@
     margin-bottom: 1vh;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
+.restauraunt-details-favorite-icon {
+    display: flex;
+    flex: 1;
+    margin-top: -5%;
+    margin-left: 10%;
+    font-size: 5rem!important;
+    color: #DE3C4B!important;
+    transition: .2s;
+}
+.restauraunt-details-favorite-icon:hover {
+    color: rgb(197, 55, 69)!important;
+    cursor: pointer;
+    transition: .2s;
+}
 .ratings {
-    margin-top: 25px;
+    margin-top: 2vh;
 }
 .rating-wrapper {
     display: flex;
     flex-direction: row;
-    margin-top: 1vh;
+    margin-top: 2vh;
 }
 .price-rating-tags {
     display: flex;
     flex-direction: row;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
 }
 .rating-count {
     font-size: 1rem;
@@ -63,13 +81,13 @@
     padding: 0;
     margin: 0;
     opacity: .85;
-    margin-top: 1vh;    
+    margin-top: 1.5vh;    
     font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
 .restauraunt-phone-wrapper {
     display: flex;
     flex-direction: row;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
 }
 .phone-icon {
     font-size: 2.3rem!important;
@@ -89,7 +107,7 @@
 .restauraunt-address-wrapper {
     display: flex;
     flex-direction: row;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
 }
 .address-icon {
     font-size: 2.3rem!important;
@@ -109,7 +127,7 @@
 .restauraunt-is-open {
     display: flex;
     flex-direction: row;
-    margin-top: 1vh;
+    margin-top: 1.5vh;
 }
 .is-open-icon {
     font-size: 2.3rem!important;

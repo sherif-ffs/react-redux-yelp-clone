@@ -9,6 +9,8 @@ import PhoneRoundedIcon from '@material-ui/icons/PhoneRounded';
 import RoomRoundedIcon from '@material-ui/icons/RoomRounded';
 import EventAvailableIcon from '@material-ui/icons/EventAvailable';
 import EventBusyIcon from '@material-ui/icons/EventBusy';
+import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import FavoriteIcon from '@material-ui/icons/Favorite';
 
 import Reviews from './Reviews'
 import LocationAndHours from './LocationAndHours'
@@ -21,7 +23,20 @@ class RestaurauntDetails extends React.Component {
         errorMessage: '',
         photos: [],
         sortValue: '',
-        searchInput: ''
+        searchInput: '',
+        iconClicked: false
+    }
+
+    onIconClick = () => {
+        if (this.state.iconClicked === false) {
+            this.setState({
+                iconClicked: true
+            })
+        } else {
+            this.setState({
+                iconClicked: false
+            })
+        }
     }
 
     onSortValueChange = (sortValue) => {
@@ -37,7 +52,6 @@ class RestaurauntDetails extends React.Component {
     }
 
     getFilteredReviews() {
-        console.log('this.state: ', this.state)
         let reviews = this.state.reviews
 
         let {sortValue, searchInput } = this.state;
@@ -55,7 +69,6 @@ class RestaurauntDetails extends React.Component {
         
         if (!!sortValue) {
             if (sortValue === 'highest') {
-                console.log('reviews: ', reviews)
                 sortedReviews = reviews.sort((a, b) => parseFloat(b.rating) - parseFloat(a.rating));
                 return sortedReviews
             } 
@@ -124,8 +137,6 @@ class RestaurauntDetails extends React.Component {
 
 
     render() {        
-        console.log('this.props: ', this.props)
-        console.log('this.state: ', this.state)
         let sortedReviews = this.getFilteredReviews();
         return (
             this.state.restauraunt == null ?
@@ -138,7 +149,10 @@ class RestaurauntDetails extends React.Component {
                             <SlideShow photos={this.state.photos}></SlideShow>
                         </div>
                         <div className="header-information-wrapper">
-                            <h1 className="restauraunt-title">{this.state.restauraunt.name}</h1>
+                            <div className="title-wrapper">
+                                <h1 className="restauraunt-title">{this.state.restauraunt.name}</h1>
+                                {this.state.iconClicked ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>}
+                            </div>
                             <div className="rating-wrapper">
                                 <StarRatings 
                                     className="ratings"
@@ -179,7 +193,7 @@ class RestaurauntDetails extends React.Component {
                         </div>
                     </div>
                     <div className="reviews-location-hours-wrapper">
-                    <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange}></Reviews>
+                    <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange} name={this.state.restauraunt.name}></Reviews>
                     <LocationAndHours coordinates={this.state.restauraunt.coordinates} hours={this.state.restauraunt.hours}></LocationAndHours>
                     </div>
                 </React.Fragment>

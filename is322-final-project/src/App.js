@@ -97,9 +97,11 @@ class App extends React.Component {
           <PageTabs/>
           <div>
             <Route path="/" exact 
-              render={(routeProps) => <Map {...routeProps} state={this.state} listings={this.state.listings} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
+              render={(routeProps) => <Map {...routeProps} state={this.state} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
             />
-            <Route path="/restauraunts" component={Grid} />
+            <Route path="/restauraunts"
+              render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
+             />
             <Route path="/profile" component={Profile} />
             <Route path="/restauraunt/:id" component={RestaurauntDetails} />
           </div>

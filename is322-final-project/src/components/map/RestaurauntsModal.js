@@ -9,11 +9,24 @@ import StarRatings from 'react-star-ratings';
 import '../../styles/map/restaurauntModal.css'
 
 class RestaurauntsModal extends React.Component {
+
     state = {
         iconClicked: false
     }
+
+    onIconClick = () => {
+        if (this.state.iconClicked === false) {
+            this.setState({
+                iconClicked: true
+            })
+        } else {
+            this.setState({
+                iconClicked: false
+            })
+        }
+    }
+
     render() {
-        console.log('this.props: ', this.props)
         return(
             <div className="apartment-modal-container">
                 <div className="apartment-modal-banner">
@@ -21,7 +34,8 @@ class RestaurauntsModal extends React.Component {
                         <h3 className="apartment-modal-banner__title">{this.props.address1}</h3>
                         <h3 className="apartment-modal-banner__title">{this.props.address2}</h3>
                     </div>
-                    <FavoriteBorderIcon className="favorite-icon"></FavoriteBorderIcon>
+                    {this.state.iconClicked ? <FavoriteIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>}
+                    {/* <FavoriteBorderIcon className="favorite-icon"></FavoriteBorderIcon> */}
                 </div>
                 <div className="apartment-modal-details">
                     <div className="left-side">

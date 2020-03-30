@@ -6,7 +6,16 @@ import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 
 import '../../styles/reviewForm.css'
-import scoutHead from '../../assets/scout-head.png'
+import cartman from '../../assets/cartman.jpg'
+
+import { connect } from "react-redux";
+import { addReview } from '../../actions/index'
+
+function mapDispatchToProps(dispatch) {
+    return {
+      addReview: review => dispatch(addReview(review))
+    };
+  }
 
 class ReviewForm extends React.Component {
     
@@ -15,7 +24,7 @@ class ReviewForm extends React.Component {
         text: '',
         user: {
             name: 'John Doe',
-            image_url: scoutHead,
+            image_url: cartman,
         }
        
     }
@@ -32,11 +41,21 @@ class ReviewForm extends React.Component {
           rating: this.state.rating,
           text: this.state.text,
           user: {
-            name: 'John Doe',
-            image_url: scoutHead,
+            name: 'Yelp Critic',
+            image_url: cartman,
           },
           time_created: new Date().toString()
         });
+        this.props.addReview({ 
+            name: this.props.name,
+            rating: this.state.rating,
+            text: this.state.text,
+            user: {
+                name: 'Yelp Critic',
+                image_url: cartman,
+            },
+          time_created: new Date().toString()
+         });
         this.setState({
             rating: 0,
             text: '',
@@ -48,7 +67,7 @@ class ReviewForm extends React.Component {
             <div className="user-review-wrapper">
                 <div className="profile-wrapper">
                     <PersonIcon className="profile-icon"></PersonIcon>
-                    <h1 className="profile-name">John Doe</h1>
+                    <h1 className="profile-name">Yelp Critic</h1>
                 </div>
                 <div className="review-content-wrapper">
                     <StarRatings
@@ -64,11 +83,7 @@ class ReviewForm extends React.Component {
                     <TextField 
                         className="review-text"
                         multiline
-                        placeholder="Ordered the plain cheese for the first time on seamless, 
-                        and wow was it incredible. So flavorful and perfectly cooked. 
-                        Sauce and cheese ratio was on point. 
-                        Will definitely be trying their other pies. 
-                        Yes it's pricey, but it is absolutely worth it!"
+                        placeholder="I was thinking of giving this place five stars. I'm kind of teetering on five stars or one star..."
                         value={this.state.text}
                         onChange={e => this.setState({ text: e.target.value})}
                     ></TextField>
@@ -79,4 +94,14 @@ class ReviewForm extends React.Component {
     }
 }
 
-export default ReviewForm
+// export default ReviewForm
+// export default connect(null, { addReview })(ReviewForm);
+
+export default connect(null, mapDispatchToProps)(ReviewForm)
+
+// const Form = connect(
+//     null,
+//     mapDispatchToProps
+//   )(ConnectedForm);
+  
+//   export default Form;

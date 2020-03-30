@@ -38,7 +38,8 @@ closeForm = () => {
   })
 }
 
-  render() { 
+  render() {
+    console.log('this.props: ', this.props)
     return(
       this.props.loading ? <LoadingScreen>loading</LoadingScreen>
       :
