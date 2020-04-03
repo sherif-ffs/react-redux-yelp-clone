@@ -30,6 +30,12 @@
     font-family: 'Lato', Helvetica,Arial , sans-serif;
     transition-timing-function: ease-in-out;
 }
+.nav-title:hover {
+    background-color: transparent!important;
+}
+#nav-title:hover {
+    background-color: transparent!important;
+}
 .nav-item-wrapper {
     display: flex;
     margin:0;

@@ -16,7 +16,7 @@
     color: #f5f5f5!important;
     background-color: #DE3C4B;
     margin-top: 2vh;
-    margin-right: 2vw;
+    margin-right: 1vw;
     position: fixed;
     left: 99%;
     margin-left: -120px; /*half the width*/
@@ -24,7 +24,6 @@
     transition: .2s;
     transition-timing-function: ease-in-out;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, .6);
-
 }
 .circle:hover {
     padding: 11px;
@@ -32,4 +31,14 @@
     transition-timing-function: ease-in-out;
     cursor: pointer;
     box-shadow: 0px 3px 6px rgba(0, 0, 0, .6);
+}
+@media (max-width: 600px) {
+    .circle {
+        height: 40px!important;
+        width: 40px!important;
+        margin-top: -1vh;
+        margin-right: 0vw;
+        position: absolute;
+        margin-left: -10px; /*half the width*/
+    }
 }

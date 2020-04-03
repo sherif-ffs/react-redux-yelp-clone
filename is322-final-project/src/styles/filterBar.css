@@ -1,0 +1,79 @@
+.filterbar-wrapper {
+    width: 35%;
+    margin-left: 7.5%;
+    margin-top: 1%;
+    height: min-content;
+    display: flex;
+    flex-direction: row;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-top: 1px solid #d3d1d1;
+    border-bottom: 1px solid #d3d1d1;
+}
+.checkboxWrapper {
+    display: flex;
+    flex-direction: column;
+}
+.radio-buttons {
+    margin-left: 30%;
+}
+.right-side-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10%;
+    width: 50%;
+}
+.radioButtonsWrapper {
+    display: flex;
+    flex-direction: column;
+ } 
+ .checkbox {
+     color: #DE3C4B!important;
+ }
+ .radio {
+    color: #DE3C4B!important;     
+ }
+
+ @media (max-width: 600px) {
+    .filterbar-wrapper {
+        width: 100%;
+        margin-left: 0%;
+        margin-top: 5%;
+        height: min-content;
+        display: flex;
+        flex-direction: column;
+        padding-top: 5%;
+        padding-bottom: 5%;
+        border-top: 1px solid #d3d1d1;
+        border-bottom: 1px solid #d3d1d1;
+    }
+    .left-side-wrapper {
+        margin-left: 2.5%;
+    }
+    .checkboxWrapper {
+        display: flex;
+        flex-direction: row;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .checkbox {
+        display: flex;
+        flex: 1;
+    }
+    .radio-buttons {
+        border: 1px solid red;
+        display: flex;
+        flex-direction: row;
+    }
+    .right-side-wrapper {
+        margin-left: 2.5%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .radioButtonsWrapper{
+        display: flex;
+        margin-left: 0%;
+        width: 100%;
+        flex-direction: row;
+     } 
+ }
