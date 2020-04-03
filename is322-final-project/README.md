@@ -21,6 +21,10 @@
 - [x] remove warnings
 - [x] get started avec redux
 - [x] create card layout for restauraunts
-- [ ] allow user to sort by price, highest-lowest rating, most reviewed
-- [ ] allow user to search from grid layout
+- [x] allow user to sort by price, highest-lowest rating, most reviewed
+- [x] allow user to search from grid layout
+- [x] hide map on mobile
+- [ ] add mobile styles for restauraunts page
+
+
 
