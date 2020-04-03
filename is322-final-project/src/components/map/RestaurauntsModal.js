@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Link } from 'react-router-dom'
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import { Button } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import StarRatings from 'react-star-ratings';
 
