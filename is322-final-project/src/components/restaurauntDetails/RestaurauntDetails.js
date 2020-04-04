@@ -121,7 +121,6 @@ class RestaurauntDetails extends React.Component {
             },
             })
             .then((res) => {
-            console.log('res: ', res)
             this.setState({
                 restauraunt: res.data,
                 photos: res.data.photos
@@ -136,7 +135,6 @@ class RestaurauntDetails extends React.Component {
             },
             })
             .then((res) => {
-            console.log('res: ', res)
             this.setState({
                 reviews: res.data.reviews
             })
@@ -149,6 +147,7 @@ class RestaurauntDetails extends React.Component {
 
 
     render() {        
+        console.log('this.props: ', this.props)
         let sortedReviews = this.getFilteredReviews();
         return (
             this.state.restauraunt == null ?
@@ -206,7 +205,7 @@ class RestaurauntDetails extends React.Component {
                     </div>
                     <div className="reviews-location-hours-wrapper">
                     <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange} name={this.state.restauraunt.name}></Reviews>
-                    <LocationAndHours coordinates={this.state.restauraunt.coordinates} hours={this.state.restauraunt.hours}></LocationAndHours>
+                    <LocationAndHours coordinates={this.state.restauraunt.coordinates} hours={this.state.restauraunt.hours} isMobile={this.props.isMobile} ></LocationAndHours>
                     </div>
                 </React.Fragment>
             : <LoadingScreen></LoadingScreen>)

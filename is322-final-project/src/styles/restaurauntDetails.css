@@ -161,3 +161,67 @@
 .location-and-hours-container {
     flex: 1;
 }
+
+@media (max-width: 600px) {
+    .header {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        margin-top: 4%;
+        margin-left:5%;
+        width: 100%;
+        flex-direction: column;
+    }
+    .restauraunt-title {
+        font-size: 2rem;
+    }
+    .restauraunt-details-favorite-icon {
+        margin-top: -1%;
+        margin-left: 35%;
+        font-size: 3rem!important;
+    }
+    .restauraunt-tags {
+        font-size: 1.2rem;
+        margin-top: 1vh;    
+        margin-left: 6vw;    
+    }
+    .price-rating-tags {
+        /* border: 1px solid red; */
+        margin-top: 2vh;    
+    }
+    .restauraunt-phone-wrapper {
+        /* border: 1px solid red; */
+        margin-top: 2vh;    
+    }
+    .restauraunt-phone {
+        font-size: 1.2rem;
+        margin-top: .5vh;    
+        margin-left: 2vw;
+    }
+    .restauraunt-address-wrapper {
+        margin-top: 2vh;    
+    }
+    .restauraunt-address {
+        font-size: 1.2rem;
+        margin-top: .5vh;    
+        margin-left: 2vw;
+    }
+    .restauraunt-is-open {
+        margin-top: 2vh;    
+    }
+    .is-open-text {
+        font-size: 1.2rem;
+        margin-top: .5vh;    
+        margin-left: 3vw;
+    }
+    .is-open-emoji {
+        font-size: 1.4rem;
+        margin-top: 1vh;
+        margin-left: 1vw;
+    }
+    .reviews-location-hours-wrapper {
+        width: 100%;
+        margin-left:5%;
+        flex-direction: column-reverse;
+    }
+}

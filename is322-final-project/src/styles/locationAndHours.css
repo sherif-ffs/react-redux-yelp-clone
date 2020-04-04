@@ -14,3 +14,8 @@
     margin-bottom: 1vh;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
+@media (max-width: 600px) {
+    .location-and-hours-wrapper {
+        margin-left: 0px;
+    }
+}

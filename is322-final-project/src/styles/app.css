@@ -1,16 +1,9 @@
-
-* {
-    /* transition: 0.3s; */
-    /* transition-timing-function: ease-in-out;
-    scroll-behavior: smooth; */
-  }
-  
-  html {
+    html {
     margin: 0;
     padding: 0;
     width: 100vw;
     overflow-x: hidden;
-    background-color: #f7f8f8;
+    background-color: whitesmoke;
   }
   
   body {

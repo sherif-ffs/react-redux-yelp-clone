@@ -15,14 +15,15 @@ class MiniMap extends React.Component {
             height: '50vh',
         },
         token:'pk.eyJ1Ijoic2hlcmlmLWZmcyIsImEiOiJjazgyNGFoM3Mwd29qM2xsbml4eHIyNm9qIn0.k8-uELDQoHBgpiITyyc6pg',
-        loading: true
+        loading: true,
+        isMobile: true
     }
     componentDidMount() {
         let newViewport = {
             latitude: this.props.coordinates.latitude,
             longitude: this.props.coordinates.longitude,
             zoom: 12,
-            width: '25vw',
+            width: this.props.isMobile ? '95vw' : '25vw',
             height: '40vh'
         }
         this.setState({
@@ -32,6 +33,7 @@ class MiniMap extends React.Component {
     }
 
     render() {
+        console.log('this.props: ', this.props)
         return (
             <div className="map-wrapper">
                 {this.state.loading ? 

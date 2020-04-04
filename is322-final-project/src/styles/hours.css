@@ -27,3 +27,15 @@
     opacity: .85;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
+@media (max-width: 600px) {
+    .hours-wrapper {
+        margin-top: 8%;
+    }
+    .day {
+        font-size: 1.4rem;  
+    }
+    .hour {
+        font-size: 1.4rem;  
+        margin-top: 1.3vh;
+    }
+}

@@ -40,3 +40,13 @@
 .review-content-wrapper button:hover {
     background-color: rgb(204, 48, 64);
 }
+@media (max-width: 600px) {
+    .user-review-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 90%;
+    }
+    .profile-name {
+        font-size: 1.2rem;
+    }
+}

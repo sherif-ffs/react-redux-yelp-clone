@@ -58,7 +58,6 @@ class PageTabs extends React.Component {
 
   render () {
     // console.log('this.props.isMobile: ', this.props.isMobile)
-    console.log('this.state.currentPage: ', this.state.currentPage)
     if (!this.props.isMobile) {
       return (
         <ul className='nav page-tabs'>

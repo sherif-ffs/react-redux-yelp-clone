@@ -9,7 +9,7 @@ class LocationAndHours extends React.Component {
         return (
             <div className="location-and-hours-wrapper">
                 <h1 className="location-and-hours-wrapper-title">Location & Hours</h1>
-                <MiniMap coordinates={this.props.coordinates}></MiniMap>
+                <MiniMap coordinates={this.props.coordinates} isMobile={this.props.isMobile}></MiniMap>
                 <Hours hours={this.props.hours}></Hours>
             </div>
         )

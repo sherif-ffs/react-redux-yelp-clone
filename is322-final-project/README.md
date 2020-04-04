@@ -24,7 +24,8 @@
 - [x] allow user to sort by price, highest-lowest rating, most reviewed
 - [x] allow user to search from grid layout
 - [x] hide map on mobile
-- [ ] add mobile styles for restauraunts page
+- [x] add mobile styles for restauraunts page
+- [x] add mobile styles for restauraunt details page
 
 
 

@@ -47,3 +47,34 @@
     font-family: 'Lato', Helvetica,Arial , sans-serif;
     color: #323648;
 }
+
+@media (max-width: 600px) {
+    .review-wrapper {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        margin-top: 8%;
+    }
+    .user-image {
+        width: 65px;
+        height: 70px;
+    }
+    .rating-wrapper {
+        display: flex;
+        flex-direction: row;
+    }
+    .review-date {
+        font-size: 1rem;
+    }
+    .user-name {
+        font-size: 1rem;
+        font-family: 'Lato', Helvetica,Arial , sans-serif;
+        color: #323648;
+    }
+    .content-text {
+        font-size: 1.2rem;
+        width: 95%;
+        font-family: 'Lato', Helvetica,Arial , sans-serif;
+        color: #323648;
+    }
+}

@@ -26,6 +26,7 @@ class App extends React.Component {
     loading: false,
     searchInput: 'New York City',
     width: window.innerWidth,
+    isMobile: false,
   }
   onSearchSubmit = (payLoad) => {
     if (payLoad.city === '') {
@@ -88,12 +89,16 @@ class App extends React.Component {
   //   window.removeEventListener('resize', this.handleWindowSizeChange);
   // }  
   handleWindowSizeChange = () => {
-    this.setState({ width: window.innerWidth });
+    this.setState({ 
+      width: window.innerWidth,
+      isMobile: window.innerWidth <= 600 ? true : false
+    });
   };
 
   componentDidMount() {
     this.setState({
-      loading: true
+      loading: true,
+      isMobile: window.innerWidth <= 600 ? true : false
     })
     let offset=0
     for (let i=0; i<7; i++) {
@@ -105,7 +110,7 @@ class App extends React.Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 600;
-
+    console.log('this.state: ', this.state)
     if (!isMobile) {
       return (
         <div>
@@ -119,7 +124,7 @@ class App extends React.Component {
                 render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} />}
                />
               <Route path="/profile" component={Profile} />
-              <Route path="/restauraunt/:id" component={RestaurauntDetails} />
+              <Route path="/restauraunt/:id" component={RestaurauntDetails} isMobile={this.state.isMobile} />
             </div>
           </BrowserRouter>
         </div>
@@ -137,7 +142,10 @@ class App extends React.Component {
                 render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} />}
                />
               <Route path="/profile" component={Profile} />
-              <Route path="/restauraunt/:id" component={RestaurauntDetails} />
+              <Route path="/restauraunt/:id" 
+              render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} />}
+              // component={RestaurauntDetails} isMobile={this.state.isMobile} 
+              />
             </div>
           </BrowserRouter>
         </div>
