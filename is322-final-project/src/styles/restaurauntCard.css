@@ -145,3 +145,78 @@
         font-family: 'Lato', Helvetica,Arial , sans-serif;
     }
   }
+  @media screen and (min-width: 1900px) {
+      .image-wrapper {
+          height: 450px!important;
+          width: 100%;
+      }
+      .restauraunt-card__image {
+          height: 100%;
+          width: 100%;
+      }
+      .card-content {
+          height: 225px;
+          margin-left: 5%;
+      }
+      .name-wrapper {
+          display: flex;
+          flex-direction: row;
+          margin-top: 4vh;
+          margin-bottom: 1vh;
+          width: 100%;
+          justify-content:space-between;
+      }
+      .name-wrapper__name {
+          font-size: 1.4rem;
+      }
+      .restauraunt-card-icon {
+        margin-right: 5%;
+        font-size: 2.5rem!important;
+      }
+      .review-count {
+        font-size: 1.1rem;        
+      }
+      .restauraunt-price-categories {
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
+    .restauraunt-location {
+        font-size: 1.2rem;
+        font-weight: 100;
+    }
+  }
+  @media screen and (max-width: 1025px) and (min-width: 601px) {
+    .restauraunt-card {
+        width: 45%;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        height: min-content;
+        margin: 15px;
+        margin-top: 7vh;
+        background-color: #f5f5f5;
+        transition: .2s;
+        box-shadow: 0px 1px 5px rgba(34, 34, 34, 0.3);
+        border-radius: 3px;
+      }
+      .image-wrapper {
+        height: 350px!important;
+        width: 100%;
+    }
+    .restauraunt-card__image {
+        height: 100%;
+        width: 100%;
+    }
+    .card-content {
+        height: 200px;
+        margin-left: 5%;
+    }
+    .name-wrapper {
+        display: flex;
+        flex-direction: row;
+        margin-top: 2vh;
+        margin-bottom: 1vh;
+        width: 100%;
+        justify-content:space-between;
+    }
+  }

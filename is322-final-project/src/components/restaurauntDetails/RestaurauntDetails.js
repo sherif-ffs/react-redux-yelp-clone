@@ -177,27 +177,27 @@ class RestaurauntDetails extends React.Component {
                             </div>
                             <div className="price-rating-tags">
                                 <h3 className="restauraunt-price">{this.state.restauraunt.price}</h3>
-                                <h3 className="restauraunt-tags">{this.state.restauraunt.categories[0].title}, {this.state.restauraunt.categories[this.state.restauraunt.categories.length - 1].title}</h3>
+                                <h3 className="restauraunt-tags restauraunts-details-text">{this.state.restauraunt.categories[0].title}, {this.state.restauraunt.categories[this.state.restauraunt.categories.length - 1].title}</h3>
                             </div>
                             <div className="restauraunt-phone-wrapper">
                                 <PhoneRoundedIcon className="phone-icon"></PhoneRoundedIcon>
-                                <h3 className="restauraunt-phone">{this.state.restauraunt.display_phone}</h3>
+                                <h3 className="restauraunt-phone restauraunts-details-text">{this.state.restauraunt.display_phone}</h3>
                             </div>
                             <div className="restauraunt-address-wrapper">
                             <RoomRoundedIcon className="address-icon"></RoomRoundedIcon>
-                            <h3 className="restauraunt-address">{this.state.restauraunt.location.display_address[0]}, {this.state.restauraunt.location.display_address[1]}</h3>
+                            <h3 className="restauraunt-address restauraunts-details-text">{this.state.restauraunt.location.display_address[0]}, {this.state.restauraunt.location.display_address[1]}</h3>
                             </div>
                             {this.state.restauraunt.hours ? 
                             (this.state.restauraunt.hours.is_open_now 
                                 ? 
                                 <div className="restauraunt-is-open">
                                     <EventAvailableIcon className="is-open-icon"></EventAvailableIcon>
-                                    <h3 className="is-open-text">We're open <span className="is-open-emoji" role="img" aria-labelledby="yummy-emoji">😋</span></h3>
+                                    <h3 className="is-open-text restauraunts-details-text">We're open <span className="is-open-emoji" role="img" aria-labelledby="yummy-emoji">😋</span></h3>
                                 </div>
                                 :
                                 <div className="restauraunt-is-open">
                                     <EventBusyIcon className="is-open-icon"></EventBusyIcon>
-                                    <h3 className="is-open-text">We're closed <span className="is-open-emoji" role="img" aria-labelledby="sad-emoji">😔</span></h3>
+                                    <h3 className="is-open-text restauraunts-details-text">We're closed <span className="is-open-emoji" role="img" aria-labelledby="sad-emoji">😔</span></h3>
                                 </div>)
                                 : ''
                             }

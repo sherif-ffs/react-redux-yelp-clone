@@ -26,6 +26,7 @@
 - [x] hide map on mobile
 - [x] add mobile styles for restauraunts page
 - [x] add mobile styles for restauraunt details page
-
+- [x] add styles for large desktop view for restauraunt details page
+- [x] add styles for tablet
 
 

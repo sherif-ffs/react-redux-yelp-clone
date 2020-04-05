@@ -62,3 +62,25 @@
       height: 100%; 
      }
   }
+  @media screen and (min-width: 1900px) {
+    .slide-container {
+      width: 900px;
+  }
+    
+    h3 {
+      text-align: center; }
+    
+    .each-slide > div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-size: cover;
+      height: 60vh;
+      border-radius: 5px;
+      box-shadow: 0px 6px 15px rgba(34, 34, 34, 0.3);
+    }
+    .slide-image {
+        width: 900px;
+        height: 100%; 
+       }
+  }
