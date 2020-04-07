@@ -54,7 +54,8 @@ class Grid extends React.Component {
       priceFilters = []
     onFilterValueChange = (filterValue) => {
         let restauraunts = this.state.allRestauraunts
-        console.log('restauraunts: ', restauraunts)        
+        // console.log('this.state.allRestauraunts: ', this.state.allRestauraunts)        
+        // console.log('this.state.restauraunts: ', this.state.restauraunts)        
 
         if (!this.state.priceFilters.includes(filterValue)) {
             this.setState({
@@ -198,7 +199,8 @@ class Grid extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.restauraunts !== this.props.restauraunts) {
             this.setState({
-                restauraunts: this.props.restauraunts
+                restauraunts: this.props.restauraunts,
+                allRestauraunts: this.props.restauraunts
             })
         }
       } 
@@ -218,6 +220,8 @@ class Grid extends React.Component {
                     id={restauraunt.id}
                     location={restauraunt.location}
                     restauraunt={restauraunt}
+                    savedRestauraunts={this.props.savedRestauraunts}
+                    onSaveNewRestauraunt={this.props.onSaveRestauraunt}
                 >
                 </RestaurauntCard>
             )

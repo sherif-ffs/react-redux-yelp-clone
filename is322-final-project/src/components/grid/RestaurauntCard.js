@@ -9,12 +9,14 @@ import '../../styles/restaurauntCard.css'
 
 import { connect } from "react-redux";
 import { saveRestauraunt } from '../../actions/index'
+import { removeRestauraunt } from '../../actions/index'
 
 function mapDispatchToProps(dispatch) {
     return {
-      saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt))
+      saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt)),
+      removeRestauraunt: restauraunt => dispatch(removeRestauraunt(restauraunt))
     };
-  }
+}
 
 class RestaurauntCard extends React.Component {
 
@@ -29,22 +31,34 @@ class RestaurauntCard extends React.Component {
         })
     }
 
-    onIconClick = () => {
-        if (this.state.iconClicked === false) {
-            this.setState({
-                iconClicked: true
-            })
-            this.props.saveRestauraunt({ 
-                restauraunt: this.state.restauraunt,
-             });
+    checkIfRestaurauntIsSaved = currentRestauraunt => {
+        console.log('currentRestauraunt: ', currentRestauraunt)
+        if (this.props.savedRestauraunts.includes(currentRestauraunt) === false) {
+            return false
         } else {
-            this.setState({
-                iconClicked: false
-            })
+            return true
         }
     }
 
+    onIconClick = (restauraunt) => {
+            console.log('restauraunt: ', restauraunt)
+            this.props.onSaveNewRestauraunt(restauraunt)
+
+            if (this.props.savedRestauraunts.includes(restauraunt) === false) {
+                console.log('new')
+                this.props.saveRestauraunt({ 
+                    restauraunt: restauraunt,
+                });
+              } 
+              else {
+                this.props.removeRestauraunt({ 
+                    restauraunt: restauraunt,
+                });
+              }
+    }
+
     render() {
+        console.log('this.props: ', this.props)
         return(
             <div className="restauraunt-card">
                 <div className="image-wrapper">
@@ -57,7 +71,10 @@ class RestaurauntCard extends React.Component {
                     <Link to={`restauraunt/${this.props.id}`} className="view-details-link">
                         <h1 className="name-wrapper__name">{this.props.name}</h1>
                     </Link>
-                        {this.state.iconClicked ? <FavoriteIcon className="restauraunt-card-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="restauraunt-card-icon" onClick={this.onIconClick}></FavoriteBorderIcon>}
+                        {this.checkIfRestaurauntIsSaved(this.props.restauraunt)
+                        ? <FavoriteIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteIcon>
+                        : <FavoriteBorderIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteBorderIcon>
+                        }
                     </div>
                     <div className="ratings-wrapper">
                         <StarRatings

@@ -10,12 +10,14 @@ import '../../styles/map/restaurauntModal.css'
 
 import { connect } from "react-redux";
 import { saveRestauraunt } from '../../actions/index'
+import { removeRestauraunt } from '../../actions/index'
 
 function mapDispatchToProps(dispatch) {
     return {
-      saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt))
+        saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt)),
+        removeRestauraunt: restauraunt => dispatch(removeRestauraunt(restauraunt))
     };
-  }
+}
 
 class RestaurauntsModal extends React.Component {
 
@@ -24,28 +26,55 @@ class RestaurauntsModal extends React.Component {
         restauraunt: ''
     }
     
+    checkIfRestaurauntIsSaved = currentRestauraunt => {
+        if (this.props.savedRestauraunts.includes(currentRestauraunt) === false) {
+            return false
+        } else {
+            return true
+        }
+    }
+
+    onIconClick = (restauraunt) => {
+        console.log('restauraunt: ', restauraunt)
+        this.props.onSaveNewRestauraunt(restauraunt)
+
+        if (this.props.savedRestauraunts.includes(restauraunt) === false) {
+            console.log('new')
+            this.props.saveRestauraunt({ 
+                restauraunt: restauraunt,
+            });
+          } 
+          else {
+            this.props.removeRestauraunt({ 
+                restauraunt: restauraunt,
+            });
+          }
+    
+    }
+
     componentDidMount() {
         this.setState({
             restauraunt: this.props.restauraunt
         })
     }
 
-    onIconClick = () => {
-        if (this.state.iconClicked === false) {
-            this.setState({
-                iconClicked: true
-            })
-            this.props.saveRestauraunt({ 
-                restauraunt: this.state.restauraunt,
-             });
-        } else {
-            this.setState({
-                iconClicked: false
-            })
-        }
-    }
+    // onIconClick = () => {
+    //     if (this.state.iconClicked === false) {
+    //         this.setState({
+    //             iconClicked: true
+    //         })
+    //         this.props.saveRestauraunt({ 
+    //             restauraunt: this.state.restauraunt,
+    //          });
+    //     } else {
+    //         this.setState({
+    //             iconClicked: false
+    //         })
+    //     }
+    // }
 
     render() {
+        console.log('this.props: ', this.props)
         return(
             <div className="apartment-modal-container">
                 <div className="apartment-modal-banner">
@@ -53,8 +82,12 @@ class RestaurauntsModal extends React.Component {
                         <h3 className="apartment-modal-banner__title">{this.props.address1}</h3>
                         <h3 className="apartment-modal-banner__title">{this.props.address2}</h3>
                     </div>
-                    {this.state.iconClicked ? <FavoriteIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>}
+                    {/* {this.state.iconClicked ? <FavoriteIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>} */}
                     {/* <FavoriteBorderIcon className="favorite-icon"></FavoriteBorderIcon> */}
+                    {this.checkIfRestaurauntIsSaved(this.props.restauraunt)
+                        ? <FavoriteIcon className="favorite-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteIcon>
+                        : <FavoriteBorderIcon className="favorite-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteBorderIcon>
+                        }
                 </div>
                 <div className="apartment-modal-details">
                     <div className="left-side">

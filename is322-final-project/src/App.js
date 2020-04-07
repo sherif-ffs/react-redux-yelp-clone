@@ -12,6 +12,12 @@ import PageTabs from './components/PageTabs';
 
 import './styles/app.css'
 
+// import { connect } from 'react-redux';
+
+// const mapStateToProps = state => {
+//     return { savedRestauraunts: state.savedRestauraunts };
+//   };
+
 class App extends React.Component {
   state = {
     viewport: {
@@ -27,7 +33,25 @@ class App extends React.Component {
     searchInput: 'New York City',
     width: window.innerWidth,
     isMobile: false,
+    savedRestauraunts: []
   }
+
+  saveNewRestauraunt = restauraunt => {
+    // console.log('this.state.savedRestauraunts.includes(restauraunt): ', this.state.savedRestauraunts.includes(restauraunt))
+    // console.log('restauraunt: ', restauraunt.name)
+    if (this.state.savedRestauraunts.includes(restauraunt) === false) {
+      this.setState({
+        savedRestauraunts: [restauraunt, ...this.state.savedRestauraunts]
+      })
+    } else {
+        let newState = this.state.savedRestauraunts.filter(function(e) { return e !== restauraunt })
+        // console.log('newState: ', newState)
+          this.setState({
+            savedRestauraunts: newState
+          })
+    }
+ }
+
   onSearchSubmit = (payLoad) => {
     if (payLoad.city === '') {
       alert('enter a city name')
@@ -110,7 +134,7 @@ class App extends React.Component {
   render() {
     const { width } = this.state;
     const isMobile = width <= 600;
-    console.log('this.state: ', this.state)
+    console.log('this.props: ', this.props)
     if (!isMobile) {
       return (
         <div>
@@ -118,10 +142,10 @@ class App extends React.Component {
             <PageTabs isMobile={isMobile} />
             <div>
               <Route path="/" exact 
-              render={(routeProps) => <Map {...routeProps} state={this.state} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
+              render={(routeProps) => <Map {...routeProps} state={this.state} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} savedRestauraunts={this.state.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
               />
               <Route path="/restauraunts"
-                render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} />}
+                render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} savedRestauraunts={this.state.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
                />
               <Route path="/profile" component={Profile} />
               <Route path="/restauraunt/:id" component={RestaurauntDetails} isMobile={this.state.isMobile} />
@@ -139,7 +163,7 @@ class App extends React.Component {
               render={(routeProps) => <Map {...routeProps} state={this.state} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
               /> */}
               <Route path="/" exact
-                render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} />}
+                render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} savedRestauraunts={this.state.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
                />
               <Route path="/profile" component={Profile} />
               <Route path="/restauraunt/:id" 
@@ -156,64 +180,5 @@ class App extends React.Component {
   
 }
 
-// class AppOld extends React.Component {
-//   state = {
-//     // view: 'page1',
-//     width: window.innerWidth,
-//   }
-  
-//   onViewChange(view) {
-//     this.setState({ view });
-//   }
-//   componentWillMount() {
-//     window.addEventListener('resize', this.handleWindowSizeChange);
-//   }
-//   componentWillUnmount() {
-//     window.removeEventListener('resize', this.handleWindowSizeChange);
-//   }  
-//   handleWindowSizeChange = () => {
-//     this.setState({ width: window.innerWidth });
-//   };
-
-//   wrapPage(jsx) {
-//     const { view } = this.state;
-//     return (
-//       <div className="container">
-//         <PageTabs currentView={view}
-//                   onViewChange={this.onViewChange.bind(this)}/>
-//         {jsx}
-//       </div>
-//     );
-//   }
-
-//   render() {
-//     const { width } = this.state;
-//     const isMobile = width <= 500;
-//     const { view } = this.state;
-//     if (!isMobile) {
-//       switch (view) {
-//         case 'page1':
-//           return (this.wrapPage(<Map />));
-//         case 'page2':
-//           return (this.wrapPage(<Grid />));
-//         case 'page3':
-//           return (this.wrapPage(<Profile />));
-//         default:
-//           return (this.wrapPage(<h2>Invalid Tab, choose another</h2>));
-//       }
-//     } else {
-//       switch (view) {
-//         case 'page2':
-//           return (this.wrapPage(<Grid />));
-//         case 'page3':
-//           return (this.wrapPage(<Profile />));
-//         default:
-//           return (this.wrapPage(<h2>Invalid Tab, choose another</h2>));
-//       }
-//     }
-    
-
-//   }
-// }
-
+// export default connect(mapStateToProps)(App);
 export default App;

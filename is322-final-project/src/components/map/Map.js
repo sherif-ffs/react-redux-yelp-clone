@@ -16,6 +16,14 @@ class Map extends React.Component {
     listings: []
   }
 
+checkIfRestaurauntIsSaved = currentRestauraunt => {
+  if (this.props.savedRestauraunts.includes(currentRestauraunt) === false) {
+      return false
+  } else {
+      return true
+  }
+}
+
   componentDidMount() {
     this.setState({
       showForm: false,
@@ -39,6 +47,7 @@ closeForm = () => {
 }
 
   render() {
+    console.log('this.props: ',this.props)
     return(
       this.props.loading ? <LoadingScreen>loading</LoadingScreen>
       :
@@ -64,7 +73,13 @@ closeForm = () => {
                         selectedListing: listing
                     })
                 }}
-              ><LocationOnRoundedIcon fontSize="medium"/></div>
+              >
+              {this.checkIfRestaurauntIsSaved(listing) 
+              ? <LocationOnRoundedIcon fontSize="large" style={{color:'blue'}}/>
+              : <LocationOnRoundedIcon fontSize="small"/>
+              }
+              </div>
+                {/* <LocationOnRoundedIcon fontSize="medium"/></div> */}
           </Marker>
       ))}
       {this.state.selectedListing ? (
@@ -88,6 +103,8 @@ closeForm = () => {
               latitude={this.state.selectedListing.coordinates.latitude}
               longitude={this.state.selectedListing.coordinates.longitude}
               id={this.state.selectedListing.id}
+              savedRestauraunts={this.props.savedRestauraunts}
+              onSaveNewRestauraunt={this.props.onSaveRestauraunt}
               onClose={() => {this.setState({
                   selectedListing: null
               })}}
