@@ -27,31 +27,51 @@ class RestaurauntsModal extends React.Component {
     }
     
     checkIfRestaurauntIsSaved = currentRestauraunt => {
-        if (this.props.savedRestauraunts.includes(currentRestauraunt) === false) {
-            return false
-        } else {
-            return true
+        // if (this.props.savedRestauraunts.includes(currentRestauraunt) === false) {
+        //     return false
+        // } else {
+        //     return true
+        // }
+        for (let i=0; i<this.props.savedRestauraunts.length; i++) {
+            if (this.props.savedRestauraunts[i].id === currentRestauraunt.id) {
+                return true
+            } else {
+                return false
+            }
         }
     }
 
-    onIconClick = (restauraunt) => {
-        console.log('restauraunt: ', restauraunt)
-        this.props.onSaveNewRestauraunt(restauraunt)
+    // onIconClick = (restauraunt) => {
+    //     this.props.onSaveNewRestauraunt(restauraunt)
 
-        if (this.props.savedRestauraunts.includes(restauraunt) === false) {
-            console.log('new')
-            this.props.saveRestauraunt({ 
-                restauraunt: restauraunt,
-            });
-          } 
-          else {
+    //     if (this.props.savedRestauraunts.includes(restauraunt) === false) {
+    //         this.props.saveRestauraunt({ 
+    //             restauraunt: restauraunt,
+    //         });
+    //       } 
+    //       else {
+    //         this.props.removeRestauraunt({ 
+    //             restauraunt: restauraunt,
+    //         });
+    //       }
+    // }
+    onIconClick = (restauraunt) => {
+        if (this.props.savedRestauraunts.filter(e => e.restauraunt.id === restauraunt.id).length > 0) {
             this.props.removeRestauraunt({ 
                 restauraunt: restauraunt,
             });
-          }
-    
+            this.setState({
+                iconClicked: false
+            })
+        } else {
+            this.props.saveRestauraunt({ 
+                restauraunt: restauraunt,
+            });
+            this.setState({
+                iconClicked: true
+            })
+        }
     }
-
     componentDidMount() {
         this.setState({
             restauraunt: this.props.restauraunt
@@ -74,7 +94,6 @@ class RestaurauntsModal extends React.Component {
     // }
 
     render() {
-        console.log('this.props: ', this.props)
         return(
             <div className="apartment-modal-container">
                 <div className="apartment-modal-banner">
@@ -84,7 +103,7 @@ class RestaurauntsModal extends React.Component {
                     </div>
                     {/* {this.state.iconClicked ? <FavoriteIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>} */}
                     {/* <FavoriteBorderIcon className="favorite-icon"></FavoriteBorderIcon> */}
-                    {this.checkIfRestaurauntIsSaved(this.props.restauraunt)
+                    {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.props.restauraunt.id).length > 0
                         ? <FavoriteIcon className="favorite-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteIcon>
                         : <FavoriteBorderIcon className="favorite-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteBorderIcon>
                         }

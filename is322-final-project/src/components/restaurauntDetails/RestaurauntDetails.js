@@ -17,12 +17,14 @@ import LocationAndHours from './LocationAndHours'
 
 import { connect } from "react-redux";
 import { saveRestauraunt } from '../../actions/index'
+import { removeRestauraunt } from '../../actions/index'
 
 function mapDispatchToProps(dispatch) {
     return {
-      saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt))
+      saveRestauraunt: restauraunt => dispatch(saveRestauraunt(restauraunt)),
+      removeRestauraunt: restauraunt => dispatch(removeRestauraunt(restauraunt))
     };
-  }
+}
 
 class RestaurauntDetails extends React.Component {
 
@@ -36,20 +38,60 @@ class RestaurauntDetails extends React.Component {
         iconClicked: false
     }
 
-    onIconClick = () => {
-        if (this.state.iconClicked === false) {
-            this.setState({
-                iconClicked: true
-            })
-            this.props.saveRestauraunt({ 
-                restauraunt: this.state.restauraunt,
-             });
-        } else {
+    checkIfRestaurauntIsSaved = currentRestauraunt => {
+        for (let i=0; i<this.props.savedRestauraunts.length; i++) {
+            if (this.props.savedRestauraunts[i].id === currentRestauraunt.id) {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+    onIconClick = (restauraunt) => {
+        if (this.props.savedRestauraunts.filter(e => e.restauraunt.id === restauraunt.id).length > 0) {
+            this.props.removeRestauraunt({ 
+                restauraunt: restauraunt,
+            });
             this.setState({
                 iconClicked: false
             })
+        } else {
+            this.props.saveRestauraunt({ 
+                restauraunt: restauraunt,
+            });
+            this.setState({
+                iconClicked: true
+            })
         }
     }
+    // onIconClick = (restauraunt) => {
+    //     this.props.onSaveRestauraunt(restauraunt)
+    //     if (this.props.savedRestauraunts.includes(restauraunt) === false) {
+    //     this.props.saveRestauraunt({ 
+    //         restauraunt: restauraunt,
+    //     });
+    //     } 
+    //     else {
+    //     this.props.removeRestauraunt({ 
+    //         restauraunt: restauraunt,
+    //     });
+    //     }
+    // }
+
+    // onIconClick = () => {
+    //     if (this.state.iconClicked === false) {
+    //         this.setState({
+    //             iconClicked: true
+    //         })
+    //         this.props.saveRestauraunt({ 
+    //             restauraunt: this.state.restauraunt,
+    //          });
+    //     } else {
+    //         this.setState({
+    //             iconClicked: false
+    //         })
+    //     }
+    // }
 
     onSortValueChange = (sortValue) => {
         this.setState({
@@ -147,7 +189,6 @@ class RestaurauntDetails extends React.Component {
 
 
     render() {        
-        console.log('this.props: ', this.props)
         let sortedReviews = this.getFilteredReviews();
         return (
             this.state.restauraunt == null ?
@@ -162,7 +203,11 @@ class RestaurauntDetails extends React.Component {
                         <div className="header-information-wrapper">
                             <div className="title-wrapper">
                                 <h1 className="restauraunt-title">{this.state.restauraunt.name}</h1>
-                                {this.state.iconClicked ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>}
+                                {/* {this.state.iconClicked ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>} */}
+                                {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.state.restauraunt.id).length > 0
+                                ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteIcon>
+                                : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteBorderIcon>
+                                }
                             </div>
                             <div className="rating-wrapper">
                                 <StarRatings 

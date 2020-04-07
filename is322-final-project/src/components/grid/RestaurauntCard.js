@@ -10,6 +10,7 @@ import '../../styles/restaurauntCard.css'
 import { connect } from "react-redux";
 import { saveRestauraunt } from '../../actions/index'
 import { removeRestauraunt } from '../../actions/index'
+import { thisExpression } from '@babel/types';
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -32,33 +33,55 @@ class RestaurauntCard extends React.Component {
     }
 
     checkIfRestaurauntIsSaved = currentRestauraunt => {
-        console.log('currentRestauraunt: ', currentRestauraunt)
-        if (this.props.savedRestauraunts.includes(currentRestauraunt) === false) {
-            return false
+        if (this.props.savedRestauraunts.filter(e => e.restauraunt.id === currentRestauraunt.id).length > 0) {
+            console.log('true')
         } else {
-            return true
+            console.log('false')
         }
     }
 
     onIconClick = (restauraunt) => {
-            console.log('restauraunt: ', restauraunt)
-            this.props.onSaveNewRestauraunt(restauraunt)
-
-            if (this.props.savedRestauraunts.includes(restauraunt) === false) {
-                console.log('new')
-                this.props.saveRestauraunt({ 
-                    restauraunt: restauraunt,
-                });
-              } 
-              else {
-                this.props.removeRestauraunt({ 
-                    restauraunt: restauraunt,
-                });
-              }
+        if (this.props.savedRestauraunts.filter(e => e.restauraunt.id === restauraunt.id).length > 0) {
+            this.props.removeRestauraunt({ 
+                restauraunt: restauraunt,
+            });
+            this.setState({
+                iconClicked: false
+            })
+        } else {
+            this.props.saveRestauraunt({ 
+                restauraunt: restauraunt,
+            });
+            this.setState({
+                iconClicked: true
+            })
+        }
+        
+            // if (this.props.savedRestauraunts.length > 0) {
+            //     for (let i=0; i<this.props.savedRestauraunts.length; i++) {
+            //         if (this.props.savedRestauraunts[i].restauraunt.id === restauraunt.id) {  
+            //             console.log('restauraunt.id: ', restauraunt.id)
+            //             console.log('this.props.savedRestauraunts[i].restauraunt.id: ', this.props.savedRestauraunts[i].restauraunt.id)
+            //             console.log('remove')
+            //             this.props.removeRestauraunt({ 
+            //                 restauraunt: restauraunt,
+            //             });
+            //         } else {
+            //             console.log('add')
+            //             this.props.saveRestauraunt({ 
+            //                 restauraunt: restauraunt,
+            //             });
+            //         }
+            //     }
+            // } else {
+            //     console.log('initial add')
+            //     this.props.saveRestauraunt({ 
+            //         restauraunt: restauraunt,
+            //     });
+            // }
     }
 
     render() {
-        console.log('this.props: ', this.props)
         return(
             <div className="restauraunt-card">
                 <div className="image-wrapper">
@@ -71,9 +94,13 @@ class RestaurauntCard extends React.Component {
                     <Link to={`restauraunt/${this.props.id}`} className="view-details-link">
                         <h1 className="name-wrapper__name">{this.props.name}</h1>
                     </Link>
-                        {this.checkIfRestaurauntIsSaved(this.props.restauraunt)
+                        {/* {this.checkIfRestaurauntIsSaved(this.props.restauraunt)
                         ? <FavoriteIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteIcon>
                         : <FavoriteBorderIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteBorderIcon>
+                        } */}
+                        {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.props.restauraunt.id).length > 0 
+                        ? <FavoriteIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteIcon> 
+                        : <FavoriteBorderIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteBorderIcon> 
                         }
                     </div>
                     <div className="ratings-wrapper">

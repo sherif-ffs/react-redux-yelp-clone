@@ -47,7 +47,7 @@ closeForm = () => {
 }
 
   render() {
-    console.log('this.props: ',this.props)
+    // console.log('this.props.savedRestauraunts: ', this.props.savedRestauraunts)
     return(
       this.props.loading ? <LoadingScreen>loading</LoadingScreen>
       :
@@ -74,7 +74,7 @@ closeForm = () => {
                     })
                 }}
               >
-              {this.checkIfRestaurauntIsSaved(listing) 
+              {this.props.savedRestauraunts.filter(e => e.restauraunt.id === listing.id).length > 0
               ? <LocationOnRoundedIcon fontSize="large" style={{color:'blue'}}/>
               : <LocationOnRoundedIcon fontSize="small"/>
               }

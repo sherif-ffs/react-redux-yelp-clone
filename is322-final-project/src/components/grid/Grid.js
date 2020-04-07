@@ -67,10 +67,8 @@ class Grid extends React.Component {
         } else {
             this.priceFilters = this.priceFilters.filter(e => e !== filterValue)
         }
-        console.log('priceFilters: ', this.priceFilters)        
 
         let filteredData = [];
-        console.log('priceFilters: ', this.priceFilters)
         if (this.priceFilters.includes("$") && this.priceFilters.length === 1) {
             let lowRestauraunts = restauraunts.filter(restauraunt => restauraunt.price === '$')
                 lowRestauraunts.forEach(res => {
@@ -138,7 +136,6 @@ class Grid extends React.Component {
         if (this.priceFilters.length === 0) {
             filteredData = restauraunts
         }
-        console.log('filteredData: ', filteredData) 
 
         this.setState({
             restauraunts: filteredData
@@ -178,7 +175,6 @@ class Grid extends React.Component {
             return sortedRestauraunts
         }
 
-        console.log('sortedRestauraunts: ', sortedRestauraunts)
 
         this.setState({
             restauraunts: sortedRestauraunts
@@ -207,7 +203,6 @@ class Grid extends React.Component {
 
     render() {
         const buttonText = this.state.showFilters ? "Hide Filters" : "Show Filters"
-        // console.log('this.state.allRestauraunts: ', this.state.allRestauraunts)
         let trendingGifs = this.state.restauraunts.slice(0,this.state.limit).map(restauraunt => {
             return(
                 <RestaurauntCard 

@@ -28,5 +28,6 @@
 - [x] add mobile styles for restauraunt details page
 - [x] add styles for large desktop view for restauraunt details page
 - [x] add styles for tablet
+- [x] allow users to add/remove a restauraunt using redux, persist across screen changes
 
 
