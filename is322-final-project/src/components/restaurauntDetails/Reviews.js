@@ -66,7 +66,7 @@ class Reviews extends React.Component {
                         </Select>
                     </FormControl>
                 </div>
-                <ReviewForm onAddReview={this.props.onAddReview} name={this.props.name}></ReviewForm>
+                <ReviewForm onAddReview={this.props.onAddReview} name={this.props.name} id={this.props.id}></ReviewForm>
                 {userReviews}
             </div>             
         )

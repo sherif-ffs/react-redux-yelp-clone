@@ -31,6 +31,7 @@ class RestaurauntDetails extends React.Component {
     state = {
         restauraunt: {},
         reviews: [],
+        userReviews: [],
         errorMessage: '',
         photos: [],
         sortValue: '',
@@ -141,16 +142,22 @@ class RestaurauntDetails extends React.Component {
     }
 
     componentDidMount() {
+        console.log('reset')
         this.callApi();
     }
     onAddReview = (review) => {
+        let userReviews = this.props.reviews.filter(e => e.name === this.state.restauraunt.name)
+        console.log('this.state.restauraunt.name: ', this.state.restauraunt.name)
+        console.log('userReviews: ', userReviews)
         let { reviews } = this.state;
-        
+        // let allReviews = userReviews.concat(reviews)
+        // let userReviews = this.props.reviews
+        console.log('reviews: ', reviews)
         let newReviews = [
             review,
             ...reviews
         ]
-            
+        console.log('newReviews: ', newReviews)            
         this.setState({
             reviews: newReviews
         }) 
@@ -177,8 +184,10 @@ class RestaurauntDetails extends React.Component {
             },
             })
             .then((res) => {
+            let userReviews = this.props.reviews.filter(e => e.id === this.props.match.params.id)
+            console.log('userReviews: ', userReviews)
             this.setState({
-                reviews: res.data.reviews
+                reviews: userReviews.concat(res.data.reviews),
             })
             })
             .catch((err) => {
@@ -189,6 +198,7 @@ class RestaurauntDetails extends React.Component {
 
 
     render() {        
+        console.log('this.state.reviews: ', this.state.reviews)
         let sortedReviews = this.getFilteredReviews();
         return (
             this.state.restauraunt == null ?
@@ -249,7 +259,7 @@ class RestaurauntDetails extends React.Component {
                         </div>
                     </div>
                     <div className="reviews-location-hours-wrapper">
-                    <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange} name={this.state.restauraunt.name}></Reviews>
+                    <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange} name={this.state.restauraunt.name} id={this.props.match.params.id}></Reviews>
                     <LocationAndHours coordinates={this.state.restauraunt.coordinates} hours={this.state.restauraunt.hours} isMobile={this.props.isMobile} ></LocationAndHours>
                     </div>
                 </React.Fragment>

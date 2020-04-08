@@ -38,6 +38,8 @@ class ReviewForm extends React.Component {
       onSubmit(event) {
         event.preventDefault();
         this.props.onAddReview({
+          name: this.props.name,
+          id: this.props.id,
           rating: this.state.rating,
           text: this.state.text,
           user: {
@@ -48,6 +50,7 @@ class ReviewForm extends React.Component {
         });
         this.props.addReview({ 
             name: this.props.name,
+            id: this.props.id,
             rating: this.state.rating,
             text: this.state.text,
             user: {
