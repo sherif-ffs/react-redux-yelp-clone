@@ -15,7 +15,10 @@ import './styles/app.css'
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-    return { savedRestauraunts: state.savedRestauraunts };
+    return { 
+      savedRestauraunts: state.savedRestauraunts,
+      createdReviews: state.reviews
+    };
   };
 
 class App extends React.Component {
@@ -146,12 +149,12 @@ class App extends React.Component {
                 render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
                />
                <Route path="/profile"
-                render={(routeProps) => <Profile {...routeProps} savedRestauraunts={this.props.savedRestauraunts} />}
+                render={(routeProps) => <Profile {...routeProps} savedRestauraunts={this.props.savedRestauraunts} reviews={this.props.createdReviews} />}
                />
               {/* <Route path="/profile" component={Profile} /> */}
               {/* <Route path="/restauraunt/:id" component={RestaurauntDetails} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} /> */}
               <Route path="/restauraunt/:id" 
-              render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
+              render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} reviews={this.props.createdReviews} />}
               />
             </div>
           </BrowserRouter>
@@ -169,7 +172,9 @@ class App extends React.Component {
               <Route path="/" exact
                 render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
                />
-              <Route path="/profile" component={Profile} />
+              <Route path="/profile"
+                render={(routeProps) => <Profile {...routeProps} savedRestauraunts={this.props.savedRestauraunts} reviews={this.props.createdReviews} />}
+               />
               <Route path="/restauraunt/:id" 
               render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
               // component={RestaurauntDetails} isMobile={this.state.isMobile} 
