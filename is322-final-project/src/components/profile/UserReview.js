@@ -7,13 +7,16 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import EditIcon from '@material-ui/icons/Edit';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
 
+import userImage from '../../assets/user_large_square.png'
+
 class UserReview extends React.Component {
+
     render() {
         return(
             <div className="user-review-container">
                 <div className="my-reviews-image-wrapper">
-                    {/* <img src={this.props.image}></img> */}
-                    <AccountBoxIcon className="my-reviews-icon"></AccountBoxIcon>
+                    <img src={userImage}></img>
+                    {/* <AccountBoxIcon className="my-reviews-icon"></AccountBoxIcon> */}
                 </div>
                 <div className="my-review-main-content">
                     <div className="my-review-header">
@@ -31,10 +34,10 @@ class UserReview extends React.Component {
                     >
                     </StarRatings>
                     <div className="my-review-text">
-                        <p>{this.props.text}</p>
+                        <p>{this.props.text.trim("")}</p>
                     </div>
                     <div className="my-review-icons">
-                        <EditIcon className="edit-my-review my-review-icon"></EditIcon>
+                        <EditIcon className="edit-my-review my-review-icon" onClick={() => this.props.showModal(this.props.review)}></EditIcon>
                         <CancelIcon className="delete-my-review my-review-icon" onClick={() => this.props.removeReview(this.props.review)}></CancelIcon>
                     </div>
                 </div>

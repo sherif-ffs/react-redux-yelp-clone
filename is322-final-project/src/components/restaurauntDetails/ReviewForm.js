@@ -7,6 +7,7 @@ import { Button } from '@material-ui/core';
 
 import '../../styles/reviewForm.css'
 import cartman from '../../assets/cartman.jpg'
+import userImage from '../../assets/user_large_square.png'
 
 import { connect } from "react-redux";
 import { addReview } from '../../actions/index'
@@ -44,7 +45,7 @@ class ReviewForm extends React.Component {
           text: this.state.text,
           user: {
             name: 'Yelp Critic',
-            image_url: cartman,
+            image_url: userImage,
           },
           time_created: new Date().toString()
         });
@@ -55,7 +56,7 @@ class ReviewForm extends React.Component {
             text: this.state.text,
             user: {
                 name: 'Yelp Critic',
-                image_url: cartman,
+                image_url: userImage,
             },
           time_created: new Date().toString()
          });
@@ -69,7 +70,8 @@ class ReviewForm extends React.Component {
         return (
             <div className="user-review-wrapper">
                 <div className="profile-wrapper">
-                    <PersonIcon className="profile-icon"></PersonIcon>
+                    <img className="profile-icon" src={userImage}></img>
+                    {/* <PersonIcon className="profile-icon"></PersonIcon> */}
                     <h1 className="profile-name">Yelp Critic</h1>
                 </div>
                 <div className="review-content-wrapper">

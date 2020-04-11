@@ -1,7 +1,12 @@
 import { ADD_REVIEW } from "../constants/action-types";
 import { REMOVE_REVIEW } from "../constants/action-types";
+import { EDIT_REVIEW } from "../constants/action-types";
 import { SAVE_RESTAURAUNT } from "../constants/action-types";
 import { REMOVE_RESTAURAUNT } from "../constants/action-types";
+
+// import userImage from '../../assets/user_large_square.png'
+import userImage from '../../src/assets/user_large_square.png'
+
 
 const initialState = {
     reviews: [],
@@ -17,21 +22,35 @@ const initialState = {
 
     if (action.type === REMOVE_REVIEW) {
       let index;
-      // for (let i=0; i<state.reviews.length; i++) {
-      //   console.log('state.review[i]: ', state.review[i])
-      //   if (state.review[i].id === action.payload.id) {
-      //     index = i
-      //   }
-      // }
       state.reviews.forEach(review => {
-        console.log('review: ', review)
-        console.log('action.payload: ', action.payload.review)
         if (review === action.payload.review) {
           index = state.reviews.indexOf(review)
-          console.log('index: ', index)
         }
       })
       state.reviews.splice(index, 1)
+      return Object.assign({}, state, {
+        reviews: state.reviews
+      });
+    }
+
+    if (action.type === EDIT_REVIEW) {
+      let currentReview = action.payload.review;
+
+      let reviews = state.reviews;
+      let index = reviews.indexOf(currentReview)
+      let updatedReview = {
+        name: currentReview.name,
+        id: currentReview.id,
+        time_created: currentReview.time_created,
+        rating: action.payload.modalState.newRating,
+        text: action.payload.modalState.newText,
+        user: {
+          image_url: userImage
+        }
+      }
+      console.log('updatedReview: ', updatedReview)
+      state.reviews[index] = updatedReview;
+      console.log('state.reviews: ', state.reviews)
       return Object.assign({}, state, {
         reviews: state.reviews
       });

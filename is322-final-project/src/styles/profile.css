@@ -7,8 +7,53 @@
 }
 .header-wrapper {
     display: flex;
+    flex-direction: row;
     width: 100%;
     flex: .4;
+    height: 200px;
+    width: 60%;
+    margin-bottom: 10vh;
+    margin-top: 8vh;
+}
+.header-image {
+    height: 220px;
+    width: 220px;
+    margin-left: 75%;
+    box-shadow: 0px 1px 4px rgba(34, 34, 34, 0.2);
+    border-radius: 5px;
+}
+.header-title {
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: #323648;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    margin-bottom: 3%;
+    margin-top: 20%;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.header-content-wrapper {
+    margin-left: 25%;
+}
+
+.review-favorite-count {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+}
+.user-review-count {
+    margin-left: 2%;
+    font-size: 1.1rem;
+    font-weight: 100;
+    color: #323648;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    margin-bottom: 3%;
+    margin-top: 10%;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
 .reviews-favorites-wrapper {
     display: flex;

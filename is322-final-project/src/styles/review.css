@@ -13,9 +13,10 @@
     margin-top: 2%;
 }
 .user-image {
-    width: 70px;
-    height: 85px;
+    width: 110px;
+    height: 110px;
     border-radius: 5px;
+    margin-left: -13%;
 }
 .rating-wrapper {
     display: flex;
