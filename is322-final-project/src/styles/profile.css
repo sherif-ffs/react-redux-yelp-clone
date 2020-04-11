@@ -2,8 +2,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    height: 800px;
-    border: 1px solid red;
+    height: min-content;
+    padding-bottom: 50px;
 }
 .header-wrapper {
     display: flex;
@@ -14,16 +14,39 @@
     display: flex;
     width: 100%;
     flex: 1;
-    border: 5px solid green;
     flex-direction: row;
+    padding-bottom: 50px;
 }
 .favorites-container {
     display: flex;
+    flex-direction: column;
+    margin-left: 5%;
     flex: 1;
-    border: 3px solid red;
 }
 .reviews-container {
     display: flex;
+    flex-direction: column;
     flex: 1;
-    border: 3px solid red;
+}
+.my-restauraunts-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #323648;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    margin-left: 10%;
+    margin-bottom: 2%;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.my-reviews-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #323648;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    margin-left: 5%;
+    margin-bottom: 2%;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
 }

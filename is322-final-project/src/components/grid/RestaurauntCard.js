@@ -10,7 +10,6 @@ import '../../styles/restaurauntCard.css'
 import { connect } from "react-redux";
 import { saveRestauraunt } from '../../actions/index'
 import { removeRestauraunt } from '../../actions/index'
-import { thisExpression } from '@babel/types';
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -56,29 +55,6 @@ class RestaurauntCard extends React.Component {
                 iconClicked: true
             })
         }
-        
-            // if (this.props.savedRestauraunts.length > 0) {
-            //     for (let i=0; i<this.props.savedRestauraunts.length; i++) {
-            //         if (this.props.savedRestauraunts[i].restauraunt.id === restauraunt.id) {  
-            //             console.log('restauraunt.id: ', restauraunt.id)
-            //             console.log('this.props.savedRestauraunts[i].restauraunt.id: ', this.props.savedRestauraunts[i].restauraunt.id)
-            //             console.log('remove')
-            //             this.props.removeRestauraunt({ 
-            //                 restauraunt: restauraunt,
-            //             });
-            //         } else {
-            //             console.log('add')
-            //             this.props.saveRestauraunt({ 
-            //                 restauraunt: restauraunt,
-            //             });
-            //         }
-            //     }
-            // } else {
-            //     console.log('initial add')
-            //     this.props.saveRestauraunt({ 
-            //         restauraunt: restauraunt,
-            //     });
-            // }
     }
 
     render() {

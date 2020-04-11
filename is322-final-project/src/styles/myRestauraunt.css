@@ -1,0 +1,97 @@
+.wrapper-for-close-icon {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.my-restauraunt-wrapper {
+    width: 75%;
+    margin-top: 3%;
+    margin-left: 10%;
+    height: 160px;
+    display: flex;
+    flex-direction: row;
+    box-shadow: 0px 1px 5px rgba(34, 34, 34, 0.3);
+    border-radius: 3px;
+}
+.my-restauraunt-image-wrapper {
+    display: flex;
+    flex: 1.3;
+    height: 100%;
+}
+.my-restauraunt-image-wrapper img {
+    height: 100%;
+    width: 100%;
+    border-bottom-left-radius: 3px;
+    border-top-left-radius: 3px;
+}
+.my-restauraunt-content-wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+    margin-left: 6%;
+    margin-top: 4%;
+    flex: 2;
+}
+.my-restauraunt-title-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between
+}
+.content-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #323648;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    margin-bottom: 3%;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.close-icon-my-restauraunt {
+    margin-right: 3%;
+    margin-top: -5%;
+    color: #323648;
+    opacity: 0;
+    transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+}
+.my-restauraunt-wrapper:hover {
+    cursor: pointer;
+    transition: .2s;
+   -moz-transition: .25s ease-in-out;
+   -webkit-transition: .25s ease-in-out;
+    box-shadow: 0px 4px 10px rgba(34, 34, 34, 0.3);
+}
+.my-restauraunt-wrapper:hover .close-icon-my-restauraunt {
+    cursor: pointer;
+    transition: opacity .25s ease-in-out;
+   -moz-transition: opacity .25s ease-in-out;
+   -webkit-transition: opacity .25s ease-in-out;
+   opacity: .7;
+}
+
+.my-restauraunt-price-categories {
+    padding: 0;
+    margin: 0; 
+    font-size: 1rem;
+    font-weight: 100;
+    opacity: .7;
+    color: #323648;
+    margin-top: 1vh!important;
+    margin-left: 0px!important;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.my-restauraunt-location {
+    padding: 0;
+    margin: 0; 
+    font-size: 1rem;
+    font-weight: 100;
+    opacity: .7;
+    color: #323648;
+    margin-top: 1vh!important;
+    margin-left: 0px!important;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+
