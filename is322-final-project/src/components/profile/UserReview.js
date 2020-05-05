@@ -6,12 +6,14 @@ import StarRatings from 'react-star-ratings';
 import CancelIcon from '@material-ui/icons/Cancel';
 import EditIcon from '@material-ui/icons/Edit';
 import AccountBoxIcon from '@material-ui/icons/AccountBox';
+import { Link } from 'react-router-dom'
 
 import userImage from '../../assets/user_large_square.png'
 
 class UserReview extends React.Component {
 
     render() {
+        console.log('this.props: ', this.props)
         return(
             <div className="user-review-container">
                 <div className="my-reviews-image-wrapper">
@@ -20,7 +22,9 @@ class UserReview extends React.Component {
                 </div>
                 <div className="my-review-main-content">
                     <div className="my-review-header">
-                        <p className="user-review-title">{this.props.name}</p>
+                        <Link to={`restauraunt/${this.props.review.id}`} className="user-review-title-link">
+                            <h1 className="user-review-title">{this.props.name}</h1>                     
+                        </Link>
                         <p className="user-review-date">{this.props.date.substring(4,15)}</p>
                     </div>
                     <StarRatings

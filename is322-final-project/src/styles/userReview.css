@@ -51,8 +51,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-top: 5%;
 }
-.user-review-title {
+/* .user-review-title {
     font-size: 1.1rem;
     font-weight: 600;
     color: #323648;
@@ -62,6 +63,22 @@
     margin-bottom: 3%;
     margin-top: 5%;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
+} */
+.user-review-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #323648;
+    padding: 0;
+    display: flex;
+    margin: 0;
+    margin-bottom: 3%;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.user-review-title-link {
+    text-decoration: none!important;
+}
+.user-review-title:hover {
+    text-decoration: underline;
 }
 .user-review-date {
     font-size: .9rem!important;
@@ -92,7 +109,6 @@
 }
 .my-reviews-ratings {
     margin-bottom: 1%;
-    border: 1px solid red;
 }
 .delete-my-review {
     margin-left: 4%;
@@ -127,4 +143,69 @@
     transition: .2s;
    -moz-transition: .25s ease-in-out;
    -webkit-transition: .25s ease-in-out;
+}
+
+@media (max-width: 600px) {
+    .user-review-container {
+        width: 100%;
+        height: min-content;
+        padding-bottom: 20px;
+        margin-top: 5%!important;
+        flex-direction: column;
+    }
+    .my-reviews-image-wrapper {
+        display: flex;
+        flex: 1;
+        height: 100%;
+    }
+    .my-reviews-image-wrapper img {
+        height: 200px;
+        width: 200px;
+        margin: auto;
+    }
+    .my-review-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 5%;
+    }
+    .user-review-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #323648;
+        padding: 0;
+        display: flex;
+        margin: 0;
+        margin-bottom: 3%;
+        margin-top: 5%;
+        font-family: 'Lato', Helvetica,Arial , sans-serif;
+    }
+    .user-review-date {
+        font-size: 1.2rem!important;
+        font-weight: 100!important;
+        color: #323648;
+        opacity: .6;
+        padding: 0;
+        display: flex;
+        margin: 0;
+        margin-bottom: 3%;
+        margin-right: 3%;
+        margin-top: -2%;
+        font-family: 'Lato', Helvetica,Arial , sans-serif;
+    }
+    .my-review-text {
+        font-size: 1.2rem!important;
+        font-weight: 100!important;
+        color: #323648;
+        opacity: .8;
+        padding: 0;
+        display: flex;
+        margin: 0;
+        width: 94%;
+        margin-bottom: 3%;
+        margin-right: 3%;
+        margin-top: -2%;
+        font-family: 'Lato', Helvetica,Arial , sans-serif; 
+    }
+
 }

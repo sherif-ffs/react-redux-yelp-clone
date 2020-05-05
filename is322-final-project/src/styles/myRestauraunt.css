@@ -36,7 +36,7 @@
 .my-restauraunt-title-wrapper {
     display: flex;
     flex-direction: row;
-    justify-content: space-between
+    justify-content: space-between;
 }
 .content-title {
     font-size: 1.1rem;
@@ -47,6 +47,12 @@
     margin: 0;
     margin-bottom: 3%;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.content-title-link {
+    text-decoration: none!important;
+}
+.content-title:hover {
+    text-decoration: underline;
 }
 .close-icon-my-restauraunt {
     margin-right: 3%;
@@ -95,3 +101,30 @@
     font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
 
+@media (max-width: 600px) {
+    .my-restauraunt-wrapper {
+        width: 100%;
+        height: min-content;
+        padding-bottom: 20px;
+        margin-left: 5%;
+        margin-top: 20%!important;
+        flex-direction: column;
+    }
+    .content-title {
+        font-size: 1.6rem;
+        margin-top: 1%;
+    }
+    .close-icon-my-restauraunt {
+        margin-right: 3%;
+        margin-top: 4%;
+        color: #323648;
+        opacity: 1;
+        font-size: 2rem;
+    }
+    .my-restauraunt-price-categories {
+        font-size: 1.2rem;
+    }
+    .my-restauraunt-location {
+        font-size: 1.2rem;
+    }
+}

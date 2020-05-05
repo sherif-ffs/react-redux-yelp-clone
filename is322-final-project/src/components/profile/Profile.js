@@ -85,6 +85,7 @@ class Profile extends React.Component {
             return(
                 <MyRestauraunt
                     key={restauraunt.id}
+                    id={restauraunt.id}
                     restauraunt={restauraunt.restauraunt}
                     title={restauraunt.restauraunt.name}
                     image={restauraunt.restauraunt.image_url}

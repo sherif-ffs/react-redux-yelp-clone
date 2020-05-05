@@ -65,7 +65,7 @@ class App extends React.Component {
     let offset=0
     for (let i=0; i<2; i++) {
       this.callYelpApi(offset, payLoad)
-      offset+=50
+      offset+=100
     }
   }
 
@@ -176,7 +176,7 @@ class App extends React.Component {
                 render={(routeProps) => <Profile {...routeProps} savedRestauraunts={this.props.savedRestauraunts} reviews={this.props.createdReviews} />}
                />
               <Route path="/restauraunt/:id" 
-              render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
+              render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} reviews={this.props.createdReviews} />}
               // component={RestaurauntDetails} isMobile={this.state.isMobile} 
               />
             </div>

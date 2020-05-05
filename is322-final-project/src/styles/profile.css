@@ -95,3 +95,67 @@
     margin-bottom: 2%;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
+
+@media (max-width: 600px) {
+    .profile-container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    .header-wrapper {
+        width: 100%;
+        flex-direction: column;
+    }
+    .header-image {
+        height: 300px;
+        width: 300px;
+        margin-left: 7.5%;
+    }
+    .header-content-wrapper {
+        margin: 0;
+        padding: 0;
+        margin-left: 8.5%;
+    }
+    .header-title {
+        font-size: 2.2rem;
+        color: #323648;
+        margin-top: 6%;
+    }
+    .review-favorite-count {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+        padding: 0;
+    }
+    .user-review-count {
+        margin-left: 2%;
+        font-size: 1.4rem;
+        margin-bottom: 3%;
+        margin-top: 1%;
+    }
+    .reviews-favorites-wrapper {
+        flex-direction: column;
+    }
+    .my-restauraunts-title {
+        font-size: 1.8rem;
+        margin-left: 5%;
+        margin-bottom: -14%;
+    }
+    .my-reviews-title {
+        font-size: 1.8rem;
+        margin-left: 7.5%;
+        margin-top: 25%;
+    }
+    .favorites-container {
+        display: flex;
+        flex-direction: column;
+        margin-left: 5%;
+        flex: 1;
+    }
+    .reviews-container {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-left: 10%;
+    }
+}

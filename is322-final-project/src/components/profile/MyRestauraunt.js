@@ -2,11 +2,13 @@ import React from 'react'
 
 import StarRatings from 'react-star-ratings';
 import CancelIcon from '@material-ui/icons/Cancel';
+import { Link } from 'react-router-dom'
 
 import '../../styles/myRestauraunt.css'
 
 class MyRestauraunt extends React.Component {
     render() {
+        console.log('this.props: ', this.props)
         return (
             <>
             <div className="wrapper-for-close-icon">
@@ -16,8 +18,10 @@ class MyRestauraunt extends React.Component {
                     </div>
                     <div className="my-restauraunt-content-wrapper">
                         <div className="my-restauraunt-title-wrapper">
-                        <h1 className="content-title">{this.props.title}</h1>
-                        <CancelIcon fontSize="medium" className="close-icon-my-restauraunt" onClick={() => this.props.onRemoveRestauraunt(this.props.restauraunt)}></CancelIcon>
+                        <Link to={`restauraunt/${this.props.restauraunt.id}`} className="content-title-link">
+                            <h1 className="content-title">{this.props.title}</h1>                     
+                        </Link>
+                        <CancelIcon fontSize="large" className="close-icon-my-restauraunt" onClick={() => this.props.onRemoveRestauraunt(this.props.restauraunt)}></CancelIcon>
                         </div>
                         <StarRatings
                             className="ratings"
