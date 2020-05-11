@@ -66,13 +66,20 @@ class Modal extends React.Component {
                             starRatedColor='#DE3C4B'
                             starEmptyColor='#d3d1d1'
                         ></StarRatings>
-                        <TextField 
+                        {/* <TextField 
                             className="modal-review-text"
                             multiline
                             placeholder={this.props.currentReview ? this.props.currentReview.text : ''}
                             value={this.state.newText}
                             onChange={(e) => this.onTextChange(e)}
-                        ></TextField>
+                        ></TextField> */}
+                        <input 
+                            className="modal-review-text modal-input"
+                            multiline
+                            placeholder={this.props.currentReview ? this.props.currentReview.text : ''}
+                            value={this.state.newText}
+                            onChange={(e) => this.onTextChange(e)}
+                        ></input>
                     </div>
                     <Button color="secondary" type="submit" className="update-review-button" onClick={() => this.props.updateReview(this.props.currentReview, this.state)}>Update Review</Button>
                 </div>

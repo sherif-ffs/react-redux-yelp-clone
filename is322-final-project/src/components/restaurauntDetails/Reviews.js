@@ -6,11 +6,22 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import ReviewForm from './ReviewForm'
 import Review from './Review'
-
+import Input from './Input'
 import SearchBar from 'material-ui-search-bar'
+import { withStyles } from '@material-ui/core/styles';
 
 
 import '../../styles/reviews.css'
+
+const styles = theme => ({
+    underline: {
+      borderBottom: '2px solid red',
+      '&:after': {
+        // The MUI source seems to use this but it doesn't work
+        borderBottom: '2px solid red',
+      },
+    }
+  })
 
 class Reviews extends React.Component {
 
@@ -25,6 +36,9 @@ class Reviews extends React.Component {
         })
     }
     render() {
+        console.log('this.props.isMobile: ', this.props.isMobile)
+        const { classes } = this.props;
+
         let userReviews = this.props.reviews.map((rating) => {
             return (
                 <Review
@@ -38,6 +52,8 @@ class Reviews extends React.Component {
                 </Review>
             )
         })
+        
+
         return(
             <div className="reviews-wrapper">
                 <h1 className="section-title">Recommended Reviews</h1>
@@ -57,6 +73,9 @@ class Reviews extends React.Component {
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"
+                            classes={{
+                                underline: classes.underline
+                            }}
                             color="secondary"
                             value={this.state.sortValue}
                             onChange={e => this.props.onSortValueChange(e.target.value)}
@@ -66,11 +85,12 @@ class Reviews extends React.Component {
                         </Select>
                     </FormControl>
                 </div>
-                <ReviewForm onAddReview={this.props.onAddReview} name={this.props.name} id={this.props.id}></ReviewForm>
+                <ReviewForm onAddReview={this.props.onAddReview} name={this.props.name} id={this.props.id} isMobile={this.props.isMobile}></ReviewForm>
                 {userReviews}
             </div>             
         )
     }
 }
 
-export default Reviews
+// export default Reviews
+export default withStyles(styles)(Reviews);

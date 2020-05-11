@@ -30,16 +30,17 @@ class Form extends React.Component {
                 <form>
                 <FormLabel component="legend" className="label">Location *</FormLabel>
                 <div className="input-wrapper">
-                    <TextField 
+                    <input 
                         id="standard-basic" 
-                        className="input city" 
+                        className="input city input-city" 
                         label="City" 
                         variant="outlined" 
+                        placeholder="Search a city"
                         color="secondary"
                         value={this.state.city}
                         onChange={(e) => this.setState({ city: e.target.value })}
                         onRequestSearch={() => this.searchTasksByTitle(this.state.searchInput)}
-                    />
+                    ></input>
                 </div>
                 <IconButton color="primary" className="search-button" onClick={this.onSearchSubmit}>
                     Search

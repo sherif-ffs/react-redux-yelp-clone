@@ -95,7 +95,17 @@
     margin-bottom: 2%;
     font-family: 'Lato', Helvetica,Arial , sans-serif;
 }
-
+.no-saved-restauraunts { 
+    margin-left: 10%!important;
+}
+.no-saved {
+    margin-left: 5%;
+    color: #DE3C4B!important;
+    font-weight: 900;
+    font-size: 2.2rem;
+    font-family: 'Kalam', cursive, 'Avenir', 'Lato', Helvetica,Arial , sans-serif;
+    /* font-family: 'Avenir', 'Lato', Helvetica,Arial , sans-serif; */
+}
 @media (max-width: 600px) {
     .profile-container {
         width: 100%;
@@ -157,5 +167,11 @@
         flex-direction: column;
         flex: 1;
         margin-left: 10%;
+    }
+    .no-saved-restauraunts { 
+        margin-top: 20%!important;
+    }
+    .no-saved-reviews {
+        margin-top: 3%;
     }
 }

@@ -45,6 +45,35 @@
     margin-top: 5px!important;
     margin-left: 20px;
 }
+.sort-reviews-label {
+    font-size: 1rem;
+    font-weight: 100;
+    color: #323648;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 1vh;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.select-reviews:hover {
+    color: red;
+    border: 1px solid red;
+}
+.reviews-select {
+    /* margin-top: 1vh;     */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    padding: 12px;
+    height: min-content;
+    font-family: 'Lato','Avenir', Helvetica,Arial , sans-serif!important;
+    border: 1px solid #dfdede;
+    color: #323648;
+    background-color: #fcfcfc;
+    font-size: .9rem;
+}
+.reviews-select:hover {
+    border: 1px solid #DE3C4B;
+}
 @media (max-width: 600px) {
     .reviews-wrapper {
         margin-left: 0%;

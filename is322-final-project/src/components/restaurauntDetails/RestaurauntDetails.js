@@ -211,14 +211,14 @@ class RestaurauntDetails extends React.Component {
                             <SlideShow photos={this.state.photos}></SlideShow>
                         </div>
                         <div className="header-information-wrapper">
-                            <div className="title-wrapper">
+                            {/* <div className="title-wrapper"> */}
                                 <h1 className="restauraunt-title">{this.state.restauraunt.name}</h1>
                                 {/* {this.state.iconClicked ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>} */}
-                                {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.state.restauraunt.id).length > 0
+                                {/* {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.state.restauraunt.id).length > 0
                                 ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteIcon>
                                 : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteBorderIcon>
-                                }
-                            </div>
+                                } */}
+                            {/* </div> */}
                             <div className="rating-wrapper">
                                 <StarRatings 
                                     className="ratings"
@@ -229,6 +229,17 @@ class RestaurauntDetails extends React.Component {
                                     starEmptyColor='#d3d1d1'
                                 ></StarRatings>
                                 <h3 className="rating-count">({this.state.restauraunt.review_count})</h3>
+                            </div>
+                            <div className="restauraunt-phone-wrapper">
+                                {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.state.restauraunt.id).length > 0
+                                ? <FavoriteIcon className="phone-icon favorite-icon-restauraunt-details" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteIcon>
+                                : <FavoriteBorderIcon className="phone-icon favorite-icon-restauraunt-details" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteBorderIcon>
+                                }
+                                {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.state.restauraunt.id).length > 0
+                                ? <h3 className="restauraunt-phone restauraunts-details-text save-text">Unsave</h3>
+                                : <h3 className="restauraunt-phone restauraunts-details-text save-text">Save</h3>
+                                }
+                                
                             </div>
                             <div className="price-rating-tags">
                                 <h3 className="restauraunt-price">{this.state.restauraunt.price}</h3>
@@ -259,7 +270,7 @@ class RestaurauntDetails extends React.Component {
                         </div>
                     </div>
                     <div className="reviews-location-hours-wrapper">
-                    <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange} name={this.state.restauraunt.name} id={this.props.match.params.id}></Reviews>
+                    <Reviews reviews={sortedReviews ? sortedReviews : this.state.reviews} onAddReview={this.onAddReview} onSortValueChange={this.onSortValueChange} onSearchInputChange={this.onSearchInputChange} name={this.state.restauraunt.name} id={this.props.match.params.id} isMobile={this.props.isMobile}></Reviews>
                     <LocationAndHours coordinates={this.state.restauraunt.coordinates} hours={this.state.restauraunt.hours} isMobile={this.props.isMobile} ></LocationAndHours>
                     </div>
                 </React.Fragment>

@@ -95,9 +95,10 @@
 }
 @media (max-width: 600px) {
     .form-wrapper {
-        width: 90vw;
+        width: 98vw;
         left: 99%;
-        margin-left: -80%; /*half the width*/
+        margin-top: 87%;
+        margin-left: -95%; /*half the width*/
     }
     .search-button {
         background-color: #DE3C4B!important;

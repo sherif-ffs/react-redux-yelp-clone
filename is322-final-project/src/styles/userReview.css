@@ -109,6 +109,8 @@
 }
 .my-reviews-ratings {
     margin-bottom: 1%;
+    margin-left: 5%;
+    border: 1px solid red;
 }
 .delete-my-review {
     margin-left: 4%;
@@ -177,6 +179,7 @@
         display: flex;
         margin: 0;
         margin-bottom: 3%;
+        margin-left: 5%;
         margin-top: 5%;
         font-family: 'Lato', Helvetica,Arial , sans-serif;
     }
@@ -190,20 +193,32 @@
         margin: 0;
         margin-bottom: 3%;
         margin-right: 3%;
+        margin-left: 5%;
         margin-top: -2%;
         font-family: 'Lato', Helvetica,Arial , sans-serif;
     }
+    .my-reviews-ratings {
+        margin-left: 5%!important;    
+        border: 1px solid red!important;
+        padding-left: 5%;
+    }
+    #user-review-ratings {
+        margin-left: 5%!important;    
+        border: 1px solid red!important;
+        padding-left: 5%;
+    }
     .my-review-text {
-        font-size: 1.2rem!important;
+        font-size: 1.3rem!important;
         font-weight: 100!important;
         color: #323648;
         opacity: .8;
         padding: 0;
         display: flex;
         margin: 0;
-        width: 94%;
+        width: 90%;
         margin-bottom: 3%;
         margin-right: 3%;
+        margin-left: 5%;
         margin-top: -2%;
         font-family: 'Lato', Helvetica,Arial , sans-serif; 
     }

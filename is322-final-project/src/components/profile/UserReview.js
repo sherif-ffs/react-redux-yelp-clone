@@ -29,20 +29,21 @@ class UserReview extends React.Component {
                     </div>
                     <StarRatings
                         className="my-reviews-ratings"
-                        name="rating"
+                        id="user-review-ratings"
+                        name="my-reviews-ratings"
                         rating={this.props.rating}
                         starDimension="30px"
                         starSpacing="2px"
                         starRatedColor='#DE3C4B'
-                        starEmptyColor='#d3d1d1'                        
+                        starEmptyColor='#d3d1d1'
                     >
                     </StarRatings>
                     <div className="my-review-text">
                         <p>{this.props.text.trim("")}</p>
                     </div>
                     <div className="my-review-icons">
-                        <EditIcon className="edit-my-review my-review-icon" onClick={() => this.props.showModal(this.props.review)}></EditIcon>
-                        <CancelIcon className="delete-my-review my-review-icon" onClick={() => this.props.removeReview(this.props.review)}></CancelIcon>
+                        <EditIcon className="edit-my-review my-review-icon" onClick={() => this.props.showModal(this.props.review)} fontSize="large"></EditIcon>
+                        <CancelIcon className="delete-my-review my-review-icon" onClick={() => this.props.removeReview(this.props.review)} fontSize="large"></CancelIcon>
                     </div>
                 </div>
                 

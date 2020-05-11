@@ -42,13 +42,50 @@
 .review-content-wrapper button:hover {
     background-color: rgb(204, 48, 64);
 }
+.review-text {
+    /* border: 1px solid red; */
+    border: 2px solid lightgray;
+    padding: 15px;
+    padding-bottom: 25px;
+    border-radius: 5px;
+    font-size: 1rem;
+    color: #323648;
+    opacity: .7;
+    resize: none;
+    margin-top: 1vh;
+    font-family: 'Lato', Helvetica,Arial , sans-serif;
+}
+.review-text:hover {
+    border: 2px solid #DE3C4B;
+}
 @media (max-width: 600px) {
     .user-review-wrapper {
         display: flex;
-        flex-direction: row;
-        width: 90%;
+        flex-direction: column;
+        /* border: 1px solid red; */
+        width: 100%;
+    }
+    .profile-wrapper {
+        /* border: 1px solid red; */
+    }
+    .profile-icon {
+        border-radius: 3px;
+        height: 250px;
+        /* margin-left: -13%; */
+        margin: auto;
+        width: 250px;
+        color: #d3d1d1;
     }
     .profile-name {
-        font-size: 1.2rem;
+        font-size: 2rem;
+    }
+    .review-text {
+        padding: 15px;
+        padding-bottom: 85px;
+        font-size: 1.3rem;
+    }
+    .post-review-button {
+        heighT: 55px;
+        font-size: 1.2rem!important;
     }
 }

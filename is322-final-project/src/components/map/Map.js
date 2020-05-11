@@ -75,7 +75,7 @@ closeForm = () => {
                 }}
               >
               {this.props.savedRestauraunts.filter(e => e.restauraunt.id === listing.id).length > 0
-              ? <LocationOnRoundedIcon fontSize="large" style={{color:'blue'}}/>
+              ? <LocationOnRoundedIcon fontSize="large" style={{color:'#323648'}}/>
               : <LocationOnRoundedIcon fontSize="small"/>
               }
               </div>

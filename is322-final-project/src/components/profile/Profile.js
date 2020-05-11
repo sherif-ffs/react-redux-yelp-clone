@@ -131,17 +131,17 @@ class Profile extends React.Component {
                     </div>
                     <div className="reviews-favorites-wrapper">
                         <div className="favorites-container profile-column">
-                            <h1 className="my-restauraunts-title">Favorite Restauraunts</h1>
+                            <h1 className="my-restauraunts-title">Saved Restauraunts</h1>
                             {this.state.restauraunts.length > 0
                             ? <div>{favoritedRestauraunts}</div>
-                            : <p>you have no saved restauraunts</p>
+                            : <p className="no-saved-restauraunts no-saved">you have no saved restauraunts ^_^</p>
                             }
                         </div>
                         <div className="reviews-container profile-column">
                         <h1 className="my-reviews-title">Reviews</h1>
                         {this.state.reviews.length > 0 
                         ? <div>{myReviews}</div>
-                        : <p>you have no saved reviews</p>}
+                        : <p className="no-saved-reviews no-saved">you have no saved reviews ^_^</p>}
                         </div>
                     </div>
                 <Modal currentReview={this.state.currentReview} updateReview={this.updateReview}></Modal>
