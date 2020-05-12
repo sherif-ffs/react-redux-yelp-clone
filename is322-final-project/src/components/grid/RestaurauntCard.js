@@ -33,9 +33,7 @@ class RestaurauntCard extends React.Component {
 
     checkIfRestaurauntIsSaved = currentRestauraunt => {
         if (this.props.savedRestauraunts.filter(e => e.restauraunt.id === currentRestauraunt.id).length > 0) {
-            console.log('true')
         } else {
-            console.log('false')
         }
     }
 
@@ -70,10 +68,6 @@ class RestaurauntCard extends React.Component {
                     <Link to={`restauraunt/${this.props.id}`} className="view-details-link">
                         <h1 className="name-wrapper__name">{this.props.name}</h1>
                     </Link>
-                        {/* {this.checkIfRestaurauntIsSaved(this.props.restauraunt)
-                        ? <FavoriteIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteIcon>
-                        : <FavoriteBorderIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteBorderIcon>
-                        } */}
                         {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.props.restauraunt.id).length > 0 
                         ? <FavoriteIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteIcon> 
                         : <FavoriteBorderIcon className="restauraunt-card-icon" onClick={() => this.onIconClick(this.props.restauraunt)}></FavoriteBorderIcon> 
@@ -100,5 +94,4 @@ class RestaurauntCard extends React.Component {
     }
 }
 
-// export default RestaurauntCard
 export default connect(null, mapDispatchToProps)(RestaurauntCard)

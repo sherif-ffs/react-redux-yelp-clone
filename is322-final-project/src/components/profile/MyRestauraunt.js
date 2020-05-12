@@ -8,7 +8,6 @@ import '../../styles/myRestauraunt.css'
 
 class MyRestauraunt extends React.Component {
     render() {
-        console.log('this.props: ', this.props)
         return (
             <>
             <div className="wrapper-for-close-icon">

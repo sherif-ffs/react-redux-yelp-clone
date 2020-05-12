@@ -2,7 +2,6 @@ import React from 'react'
 
 import '../../styles/modal.css'
 import CancelIcon from '@material-ui/icons/Cancel';
-import TextField from '@material-ui/core/TextField';
 import StarRatings from 'react-star-ratings';
 import { Button } from '@material-ui/core';
 
@@ -19,12 +18,10 @@ class Modal extends React.Component {
         })
     }
     componentDidUpdate(prevProps) {
-        console.log('prevProps: ', prevProps)
         if (prevProps.currentReview !== this.props.currentReview) {
             this.setState({
                 newText: '',
                 newRating : this.props.currentReview.rating
-                // rating: this.state.newRating
             })
         }
     }
@@ -46,7 +43,6 @@ class Modal extends React.Component {
     }
 
     render() {
-        console.log('this.props: ', this.props)
         return(
             <div className="modal-wrapper">
                 <div className="modal-container">
@@ -58,7 +54,6 @@ class Modal extends React.Component {
                         <StarRatings
                             className="ratings"
                             name="rating"
-                            // rating={this.props.currentReview ? this.props.currentReview.rating : 0 }
                             rating={this.state.newRating}
                             changeRating={this.changeRating}
                             starDimension="40px"
@@ -66,16 +61,9 @@ class Modal extends React.Component {
                             starRatedColor='#DE3C4B'
                             starEmptyColor='#d3d1d1'
                         ></StarRatings>
-                        {/* <TextField 
-                            className="modal-review-text"
-                            multiline
-                            placeholder={this.props.currentReview ? this.props.currentReview.text : ''}
-                            value={this.state.newText}
-                            onChange={(e) => this.onTextChange(e)}
-                        ></TextField> */}
                         <input 
                             className="modal-review-text modal-input"
-                            multiline
+                            multiline="true"
                             placeholder={this.props.currentReview ? this.props.currentReview.text : ''}
                             value={this.state.newText}
                             onChange={(e) => this.onTextChange(e)}

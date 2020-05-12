@@ -202,8 +202,10 @@
         margin-left: 6vw;    
     }
     .price-rating-tags {
-        /* border: 1px solid red; */
         margin-top: 2vh;    
+    }
+    .restauraunts-details-text {
+        text-align: left!important;
     }
     .restauraunt-phone-wrapper {
         /* border: 1px solid red; */

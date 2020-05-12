@@ -33,7 +33,6 @@ class MiniMap extends React.Component {
     }
 
     render() {
-        console.log('this.props: ', this.props)
         return (
             <div className="map-wrapper">
                 {this.state.loading ? 

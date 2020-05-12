@@ -6,22 +6,9 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import ReviewForm from './ReviewForm'
 import Review from './Review'
-import Input from './Input'
 import SearchBar from 'material-ui-search-bar'
-import { withStyles } from '@material-ui/core/styles';
-
 
 import '../../styles/reviews.css'
-
-const styles = theme => ({
-    underline: {
-      borderBottom: '2px solid red',
-      '&:after': {
-        // The MUI source seems to use this but it doesn't work
-        borderBottom: '2px solid red',
-      },
-    }
-  })
 
 class Reviews extends React.Component {
 
@@ -36,10 +23,8 @@ class Reviews extends React.Component {
         })
     }
     render() {
-        console.log('this.props.isMobile: ', this.props.isMobile)
-        const { classes } = this.props;
 
-        let userReviews = this.props.reviews.map((rating) => {
+        let userReviews = this.props.reviews.map((rating, index) => {
             return (
                 <Review
                     className="user-review"
@@ -48,6 +33,7 @@ class Reviews extends React.Component {
                     text={rating.text}
                     image={rating.user.image_url}
                     name={rating.user.name}
+                    key={index}
                 >
                 </Review>
             )
@@ -71,11 +57,8 @@ class Reviews extends React.Component {
                     <FormControl className="dropdown-wrapper">
                         <InputLabel id="demo-simple-select-label">Sort Reviews</InputLabel>
                         <Select
-                            labelId="demo-simple-select-label"
+                            labelid="demo-simple-select-label"
                             id="demo-simple-select"
-                            classes={{
-                                underline: classes.underline
-                            }}
                             color="secondary"
                             value={this.state.sortValue}
                             onChange={e => this.props.onSortValueChange(e.target.value)}
@@ -92,5 +75,4 @@ class Reviews extends React.Component {
     }
 }
 
-// export default Reviews
-export default withStyles(styles)(Reviews);
+export default Reviews

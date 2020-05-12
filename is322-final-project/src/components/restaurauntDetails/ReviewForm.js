@@ -1,8 +1,6 @@
 import React from 'react'
 
-import PersonIcon from '@material-ui/icons/Person';
 import StarRatings from 'react-star-ratings';
-import TextField from '@material-ui/core/TextField';
 import { Button } from '@material-ui/core';
 
 import '../../styles/reviewForm.css'
@@ -80,7 +78,6 @@ class ReviewForm extends React.Component {
             <div className="user-review-wrapper">
                 <div className="profile-wrapper">
                     <img className="profile-icon" src={userImage}></img>
-                    {/* <PersonIcon className="profile-icon"></PersonIcon> */}
                     <h1 className="profile-name">Yelp Critic</h1>
                 </div>
                 <div className="review-content-wrapper">
@@ -110,7 +107,7 @@ class ReviewForm extends React.Component {
                     
                     <textarea 
                         className="review-text"
-                        multiline
+                        multiline="true"
                         placeholder="I was thinking of giving this place five stars. I'm kind of teetering on five stars or one star..."
                         value={this.state.text}
                         onChange={e => this.setState({ text: e.target.value})}
@@ -122,14 +119,5 @@ class ReviewForm extends React.Component {
     }
 }
 
-// export default ReviewForm
-// export default connect(null, { addReview })(ReviewForm);
-
 export default connect(null, mapDispatchToProps)(ReviewForm)
 
-// const Form = connect(
-//     null,
-//     mapDispatchToProps
-//   )(ConnectedForm);
-  
-//   export default Form;

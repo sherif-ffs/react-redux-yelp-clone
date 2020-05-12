@@ -35,7 +35,7 @@ class Hours extends React.Component {
                 ?
                 <ul className="hours-list">
                     {this.state.hours.map((hour, index) => (
-                        <li className="hour"><span className="day">{this.state.days[index]}:</span> {this.days}{hour[0]} - {hour[1]}</li>
+                        <li className="hour" key={index}><span className="day">{this.state.days[index]}:</span> {this.days}{hour[0]} - {hour[1]}</li>
                     )
                     )}
                 </ul>

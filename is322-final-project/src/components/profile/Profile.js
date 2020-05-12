@@ -10,9 +10,6 @@ import userImage from '../../assets/user_large_square.png'
 import UserReview from './UserReview'
 import Modal from './Modal'
 
-// const mapStateToProps = state => {
-//     return { savedRestauraunts: state.savedRestauraunts };
-//   };
 import '../../styles/profile.css'
 
 function mapDispatchToProps(dispatch) {
@@ -47,8 +44,6 @@ class Profile extends React.Component {
     }
 
     updateReview = (review, modalState) => {
-        console.log('review: ', review)
-        console.log('modalState: ', modalState)
         this.setState({
             currentReview: review
         })
@@ -80,7 +75,6 @@ class Profile extends React.Component {
         })
     }
     render() {
-        console.log('this.state: ', this.state)
         let favoritedRestauraunts = this.state.restauraunts.map(restauraunt => {
             return(
                 <MyRestauraunt

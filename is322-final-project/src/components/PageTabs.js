@@ -6,34 +6,18 @@ import '../styles/pageTabs.css'
 class PageTabs extends React.Component {
   state = { 
     currentPage: '/',
-    // currentPage: this.props.isMobile ? '/restauraunts' : '/',
     isMobile: false
   }
 
   isActiveTab(tabName) {
-    // if (this.props.isMobile) {
-    //   return 'nav-link active'
-    // }
     return (tabName === this.state.currentPage) ? 'nav-link active' : 'nav-link';
   }
-
-  // componentDidMount() {
-  //   if (this.props.isMobile) {
-  //     this.setState({
-  //       currentPage: '/restauraunts'
-  //     })
-  //   }
-  // }
 
   componentWillMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.handleWindowSizeChange);
-  // }  
 
   handleWindowSizeChange = () => {
-    // const isMobile = width <= 500;
     const width = window.innerWidth;
     if (width <= 600) {
       this.setState({ 
@@ -57,7 +41,6 @@ class PageTabs extends React.Component {
   }
 
   render () {
-    // console.log('this.props.isMobile: ', this.props.isMobile)
     if (!this.props.isMobile) {
       return (
         <ul className='nav page-tabs'>

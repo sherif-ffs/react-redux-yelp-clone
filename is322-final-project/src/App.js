@@ -40,14 +40,12 @@ class App extends React.Component {
   }
 
   saveNewRestauraunt = restauraunt => {
-    // console.log('this.state.savedRestauraunts.includes(restauraunt): ', this.state.savedRestauraunts.includes(restauraunt))
     if (this.state.savedRestauraunts.includes(restauraunt) === false) {
       this.setState({
         savedRestauraunts: [restauraunt, ...this.state.savedRestauraunts]
       })
     } else {
         let newState = this.state.savedRestauraunts.filter(function(e) { return e !== restauraunt })
-        // console.log('newState: ', newState)
           this.setState({
             savedRestauraunts: newState
           })
@@ -111,9 +109,7 @@ class App extends React.Component {
   componentWillMount() {
     window.addEventListener('resize', this.handleWindowSizeChange);
   }
-  // componentWillUnmount() {
-  //   window.removeEventListener('resize', this.handleWindowSizeChange);
-  // }  
+
   handleWindowSizeChange = () => {
     this.setState({ 
       width: window.innerWidth,
@@ -151,8 +147,7 @@ class App extends React.Component {
                <Route path="/profile"
                 render={(routeProps) => <Profile {...routeProps} savedRestauraunts={this.props.savedRestauraunts} reviews={this.props.createdReviews} />}
                />
-              {/* <Route path="/profile" component={Profile} /> */}
-              {/* <Route path="/restauraunt/:id" component={RestaurauntDetails} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} /> */}
+              
               <Route path="/restauraunt/:id" 
               render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} reviews={this.props.createdReviews} />}
               />
@@ -166,9 +161,6 @@ class App extends React.Component {
           <BrowserRouter>
             <PageTabs isMobile={isMobile} />
             <div>
-              {/* <Route path="/" exact 
-              render={(routeProps) => <Map {...routeProps} state={this.state} onSearchSubmit={this.onSearchSubmit} loading={this.state.loading} restauraunts={this.state.restauraunts} />}
-              /> */}
               <Route path="/" exact
                 render={(routeProps) => <Grid {...routeProps} state={this.state} loading={this.state.loading} restauraunts={this.state.restauraunts} searchInput={this.state.searchInput} onSearchSubmit={this.onSearchSubmit} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} />}
                />
@@ -177,7 +169,6 @@ class App extends React.Component {
                />
               <Route path="/restauraunt/:id" 
               render={(routeProps) => <RestaurauntDetails {...routeProps} isMobile={this.state.isMobile} savedRestauraunts={this.props.savedRestauraunts} onSaveRestauraunt={this.saveNewRestauraunt} reviews={this.props.createdReviews} />}
-              // component={RestaurauntDetails} isMobile={this.state.isMobile} 
               />
             </div>
           </BrowserRouter>
@@ -190,4 +181,3 @@ class App extends React.Component {
 }
 
 export default connect(mapStateToProps)(App);
-// export default App;

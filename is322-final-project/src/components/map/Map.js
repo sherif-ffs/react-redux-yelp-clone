@@ -47,7 +47,6 @@ closeForm = () => {
 }
 
   render() {
-    // console.log('this.props.savedRestauraunts: ', this.props.savedRestauraunts)
     return(
       this.props.loading ? <LoadingScreen>loading</LoadingScreen>
       :
@@ -61,7 +60,7 @@ closeForm = () => {
       >
       {this.props.restauraunts.map((listing) => (
           <Marker
-            // key={listing.id}
+            key={listing.id}
             latitude={listing.coordinates.latitude}
             longitude={listing.coordinates.longitude}
           >
@@ -79,7 +78,6 @@ closeForm = () => {
               : <LocationOnRoundedIcon fontSize="small"/>
               }
               </div>
-                {/* <LocationOnRoundedIcon fontSize="medium"/></div> */}
           </Marker>
       ))}
       {this.state.selectedListing ? (

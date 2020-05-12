@@ -5,7 +5,6 @@ import '../../styles/userReview.css'
 import StarRatings from 'react-star-ratings';
 import CancelIcon from '@material-ui/icons/Cancel';
 import EditIcon from '@material-ui/icons/Edit';
-import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import { Link } from 'react-router-dom'
 
 import userImage from '../../assets/user_large_square.png'
@@ -13,12 +12,10 @@ import userImage from '../../assets/user_large_square.png'
 class UserReview extends React.Component {
 
     render() {
-        console.log('this.props: ', this.props)
         return(
             <div className="user-review-container">
                 <div className="my-reviews-image-wrapper">
                     <img src={userImage}></img>
-                    {/* <AccountBoxIcon className="my-reviews-icon"></AccountBoxIcon> */}
                 </div>
                 <div className="my-review-main-content">
                     <div className="my-review-header">

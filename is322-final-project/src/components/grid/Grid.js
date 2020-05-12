@@ -54,8 +54,6 @@ class Grid extends React.Component {
       priceFilters = []
     onFilterValueChange = (filterValue) => {
         let restauraunts = this.state.allRestauraunts
-        // console.log('this.state.allRestauraunts: ', this.state.allRestauraunts)        
-        // console.log('this.state.restauraunts: ', this.state.restauraunts)        
 
         if (!this.state.priceFilters.includes(filterValue)) {
             this.setState({
@@ -140,13 +138,11 @@ class Grid extends React.Component {
         this.setState({
             restauraunts: filteredData
         })
-        // return filteredData
       }
 
     sortRestauraunts(sortValue) {
         let restauraunts = this.state.restauraunts
 
-        // let { sortValue } = this.state;
         let sortedRestauraunts;
         
         if (!!sortValue) {
@@ -180,7 +176,6 @@ class Grid extends React.Component {
             restauraunts: sortedRestauraunts
         })
 
-        // return sortedRestauraunts
     }
     
     componentDidMount() {
@@ -213,6 +208,7 @@ class Grid extends React.Component {
                     categories={restauraunt.categories}
                     image={restauraunt.image_url}
                     id={restauraunt.id}
+                    key={restauraunt.id}
                     location={restauraunt.location}
                     restauraunt={restauraunt}
                     savedRestauraunts={this.props.savedRestauraunts}

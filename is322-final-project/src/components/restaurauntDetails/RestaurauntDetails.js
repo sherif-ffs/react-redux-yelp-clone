@@ -65,34 +65,6 @@ class RestaurauntDetails extends React.Component {
             })
         }
     }
-    // onIconClick = (restauraunt) => {
-    //     this.props.onSaveRestauraunt(restauraunt)
-    //     if (this.props.savedRestauraunts.includes(restauraunt) === false) {
-    //     this.props.saveRestauraunt({ 
-    //         restauraunt: restauraunt,
-    //     });
-    //     } 
-    //     else {
-    //     this.props.removeRestauraunt({ 
-    //         restauraunt: restauraunt,
-    //     });
-    //     }
-    // }
-
-    // onIconClick = () => {
-    //     if (this.state.iconClicked === false) {
-    //         this.setState({
-    //             iconClicked: true
-    //         })
-    //         this.props.saveRestauraunt({ 
-    //             restauraunt: this.state.restauraunt,
-    //          });
-    //     } else {
-    //         this.setState({
-    //             iconClicked: false
-    //         })
-    //     }
-    // }
 
     onSortValueChange = (sortValue) => {
         this.setState({
@@ -142,22 +114,15 @@ class RestaurauntDetails extends React.Component {
     }
 
     componentDidMount() {
-        console.log('reset')
         this.callApi();
     }
     onAddReview = (review) => {
         let userReviews = this.props.reviews.filter(e => e.name === this.state.restauraunt.name)
-        console.log('this.state.restauraunt.name: ', this.state.restauraunt.name)
-        console.log('userReviews: ', userReviews)
         let { reviews } = this.state;
-        // let allReviews = userReviews.concat(reviews)
-        // let userReviews = this.props.reviews
-        console.log('reviews: ', reviews)
         let newReviews = [
             review,
             ...reviews
         ]
-        console.log('newReviews: ', newReviews)            
         this.setState({
             reviews: newReviews
         }) 
@@ -185,7 +150,6 @@ class RestaurauntDetails extends React.Component {
             })
             .then((res) => {
             let userReviews = this.props.reviews.filter(e => e.id === this.props.match.params.id)
-            console.log('userReviews: ', userReviews)
             this.setState({
                 reviews: userReviews.concat(res.data.reviews),
             })
@@ -198,7 +162,6 @@ class RestaurauntDetails extends React.Component {
 
 
     render() {        
-        console.log('this.state.reviews: ', this.state.reviews)
         let sortedReviews = this.getFilteredReviews();
         return (
             this.state.restauraunt == null ?
@@ -211,14 +174,7 @@ class RestaurauntDetails extends React.Component {
                             <SlideShow photos={this.state.photos}></SlideShow>
                         </div>
                         <div className="header-information-wrapper">
-                            {/* <div className="title-wrapper"> */}
-                                <h1 className="restauraunt-title">{this.state.restauraunt.name}</h1>
-                                {/* {this.state.iconClicked ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteIcon> : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={this.onIconClick}></FavoriteBorderIcon>} */}
-                                {/* {this.props.savedRestauraunts.filter(e => e.restauraunt.id === this.state.restauraunt.id).length > 0
-                                ? <FavoriteIcon className="restauraunt-details-favorite-icon" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteIcon>
-                                : <FavoriteBorderIcon className="restauraunt-details-favorite-icon" onClick={() => this.onIconClick(this.state.restauraunt)}></FavoriteBorderIcon>
-                                } */}
-                            {/* </div> */}
+                            <h1 className="restauraunt-title">{this.state.restauraunt.name}</h1>
                             <div className="rating-wrapper">
                                 <StarRatings 
                                     className="ratings"
@@ -280,5 +236,4 @@ class RestaurauntDetails extends React.Component {
     }
 }
 
-// export default RestaurauntDetails
 export default connect(null, mapDispatchToProps)(RestaurauntDetails)

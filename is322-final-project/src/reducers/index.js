@@ -4,7 +4,6 @@ import { EDIT_REVIEW } from "../constants/action-types";
 import { SAVE_RESTAURAUNT } from "../constants/action-types";
 import { REMOVE_RESTAURAUNT } from "../constants/action-types";
 
-// import userImage from '../../assets/user_large_square.png'
 import userImage from '../../src/assets/user_large_square.png'
 
 
@@ -48,9 +47,7 @@ const initialState = {
           image_url: userImage
         }
       }
-      console.log('updatedReview: ', updatedReview)
       state.reviews[index] = updatedReview;
-      console.log('state.reviews: ', state.reviews)
       return Object.assign({}, state, {
         reviews: state.reviews
       });
